@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Content-Language" content="en-us">
+	<title>Example Web Editor</title>
+	<link rel="stylesheet" type="text/css" href="orion/code_edit/built-codeEdit.css"/>
+	<link rel="stylesheet" type="text/css" href="xtext/2.10.0/xtext-orion.css"/>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<script src="webjars/requirejs/2.2.0/require.min.js"></script>
+	<script type="text/javascript">
+		var baseUrl = window.location.pathname;
+		var fileIndex = baseUrl.indexOf("index.html");
+		if (fileIndex > 0)
+			baseUrl = baseUrl.slice(0, fileIndex);
+		require.config({
+			baseUrl: baseUrl,
+			paths: {
+				"text": "webjars/requirejs-text/2.0.15/text",
+				"jquery": "webjars/jquery/2.2.3/jquery.min",
+				"xtext/xtext-orion": "xtext/2.10.0/xtext-orion"
+			}
+		});
+		require(["orion/code_edit/built-codeEdit-amd"], function() {
+			require(["xtext/xtext-orion"], function(xtext) {
+				xtext.createEditor({
+					baseUrl: baseUrl,
+					syntaxDefinition: "xtext-resources/generated/create-syntax"
+				});
+				jQuery('#generate-button').bind("click", function(e){
+					
+					jQuery('#generator-result').html('<iframe src="http://' + location.host + '/xtext-service/generate-all?resource=example1.create"></iframe>');
+					e.preventDefault();
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+
+<div class="container">
+	<div class="header">
+		<h1>Example Create Web Editor</h1>
+	</div>
+	<div class="content">
+		<div 	id="xtext-editor" 
+				class="editor" 
+				data-editor-xtext-lang="create"
+ 				data-editor-resource-id="example1.create"
+				>
+		</div>
+ 		<div class="button-wrapper">
+			<button id="generate-button" value="Generate" title="Generate">Generate</button>
+			<div id="generator-result">
+				Result
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

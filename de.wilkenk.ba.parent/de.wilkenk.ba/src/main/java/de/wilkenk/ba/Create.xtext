@@ -1,0 +1,319 @@
+grammar de.wilkenk.ba.Create with org.eclipse.xtext.xbase.Xbase
+
+generate create "http://www.wilkenk.de/ba/Create"
+
+/* root für die Grammatik.
+ * "game" als Sammelpunkt für alle auftretenden Aspekte der Charaktererstellung,
+ * da einige Aspekte nicht nur Einfluss auf die Charaktererstellung haben, sondern in der "Welt" verwurzelt sind.
+ */
+Domainmodel:
+	importSection=XImportSection?
+	'game' name = QualifiedName '('
+		elements+=Entity*
+	')';
+
+/* mögliche Aspekte des Spiels */
+Entity:
+	Character | Combination | Attribute | CombinedAttribute | Dice | Raise | Category | DecisionTable;
+
+/* Charakterbeschreibung */
+Character:
+	'character' name = QualifiedName '('
+		properties += Property*
+		(operations += Operation)*
+	')'
+;
+
+/* Eigenschaften des Charakters. Beschreibende und Werteigenschaften */
+Property:
+	'attribute:' attrValue = [Attribute] | 
+	'combinedAttribute:' combAttrValue = [CombinedAttribute] | 
+	'combination:' combValue = [Combination]
+;
+
+/* Möglichkeit eigene Methoden zu 'bauen' zur Erweiterung der Charaktermöglichkeiten, eventuell weg? (nice to have) */
+Operation:
+    'op' name = ValidID 
+		'('(params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)?')' ':' type=JvmTypeReference 
+			body=XBlockExpression
+;
+
+/***************************
+ * Attribute 
+ ***************************/
+
+/* kann rein textuelle Beschreibung sein, 
+ * kann Werte bekommen
+ */
+Attribute:
+	'attribute' name = QualifiedName  '('
+	('range[' minValue = INT ',' maxValue = INT ']')?
+	('value:' value=INT)?
+	('initialValue:' initialValue = InitialAttributeDecision)?
+	('category:'category = [Category])? 
+	('description:' description = ID )?
+	')'
+;
+
+/* Regel um Attribut Variablen in Grammatik zu referenzieren. */
+AttributeRef:
+	attribute=[Attribute] '.' part=AttributePart
+;
+
+/* Liste der möglichen Variablen, 
+ * muss bei Veränderung von Attribute angepasst/ergänzt werden
+ */
+enum AttributePart:
+	attrName | attrValue | attrMinValue | attrMaxValue
+;
+
+/* Initialwert Beschreibung für Attribute */
+InitialAttributeDecision:
+	type=InitAttribute
+;
+
+/* Initialwert kann Zahl oder Würfelergebnis sein */
+InitAttribute:
+	initValue=INT | diceRef=DiceRef
+;
+
+/* angedacht zur Kategorisierung von Eigenschaften */
+Category:
+	'category' name = ID
+;
+
+/* kombiniertes Attribut, Wert setzt sich aus mehreren Attributen zusammen (berechneter Wert)
+ * Daher Unterschied zu Attribute
+ */
+CombinedAttribute:
+	'combinedAttribute' name = QualifiedName '('
+	'range[' minValue = INT ',' maxValue = INT ']' 
+	combValue = MathExpression
+	('category:'category=[Category])? 
+	('description:' description = ID )?
+	')'
+;
+
+/* Regel um CombinedAttribut Variablen in Grammatik zu referenzieren. */
+CombinedAttributeRef:
+	combinedAttribute=[CombinedAttribute] '.' part=CombinedAttributePart
+;
+/* Liste der möglichen Variablen, 
+ * muss bei Veränderung von CombinedAttribute angepasst/ergänzt werden
+ */
+enum CombinedAttributePart:
+	combAttrName | combAttrValue | combAttrMinValue | combAttrMaxValue
+;
+
+/***************************
+ * Attribute Expression
+ ***************************/
+
+/* Mathematische Kombination von Attributen für "CombinatedAttributes" */
+MathExpression:
+	Addition
+;
+
+/* Add & Sub */
+Addition returns MathExpression:
+	Multiplication ({Addition.left=current} op=('+' | '-') right=Multiplication)*
+;
+
+/* Mult & Div */
+Multiplication returns MathExpression:
+	Primary ({Multiplication.left=current} op=('*' | '/') right=Primary)*
+;
+
+Primary returns MathExpression:
+	AttributeRef |
+	DiceRef |
+	'(' Addition ')'
+;
+
+/***************************
+ * Combination
+ ***************************/
+
+/* Combination 'sollen' mehrere Gruppierungsmöglichkeiten wiederspiegeln.
+ * Berufe, Auswirkungen auf mehrere Eigenschaften, Beschreibung umfassenderer "Zusammenstellungen"
+ */
+Combination: 
+	'combination' name = ID '('
+		(conditions+=CombinationCondition)*
+	')'
+	raise=[Raise]
+;
+
+/* Regel um Kombinationen Variablen in Grammatik zu referenzieren. */
+CombinationRef:
+	combination=[Combination] '.' part=CombinationPart
+;
+/* Liste der möglichen Variablen, 
+ * muss bei Veränderung von Combination angepasst/ergänzt werden
+ */
+enum CombinationPart:
+	combinationName | combinationConditions
+//	TODO Kombinationsvariblen ergänzen
+;
+
+/* Vorbedingungen, damit Kombinationen erfüllt oder erhalten werden können. */
+CombinationCondition:
+	'combinationCondition' name = ID '(' 
+	//TODO condition logic - reicht das so?
+	condition=XExpression
+	')'
+;
+
+/***************************
+ * Dice
+ ***************************/
+
+/* Würfel halt */
+Dice:
+	'dice' name = ID '(' 
+	maxValue=INT
+	')'
+;
+
+/* Regel um Dice Variablen in Grammatik zu referenzieren. */
+DiceRef:
+	dice=[Dice] '.' part=DicePart
+;
+
+/* Liste der möglichen Variablen, 
+ * muss bei Veränderung von Dice angepasst/ergänzt werden
+ */
+enum DicePart:
+	name | throwValue |maxValue
+	//TODO eventuell nur throwValue?
+;
+
+/***************************
+ * Raise
+ ***************************/
+
+Raise:
+	AttributeRaise | CombinationRaise
+;
+
+/* Steigerung von Attributen */
+AttributeRaise:
+	'attributeRaise' name=ValidID '('
+	target=[Attribute]
+	(tries=INT)?
+	valueChange=AttributeRaiseType
+	')'
+;
+
+/* Arten, wie Attribute gesteigert werden können */
+AttributeRaiseType:
+	DiceBasedRaise | ConstantBasedRaise
+;
+
+/* Würfelsteigerung */
+DiceBasedRaise:
+	'diceRaise' '('
+	diceToUse=[Dice]
+	result=DiceRef
+	')'
+;
+
+/* Steigerung um einen Wert */
+ConstantBasedRaise:
+	'constantRaise' '('
+	result=INT
+	')'
+;
+
+/* Steigerung/Änderung von Combinations */
+CombinationRaise:
+	'combinationRaise' name = ValidID '('
+	(actions+=CombinationRaiseType)+
+	')'
+;
+
+CombinationRaiseType:
+	AddCombination | DeleteCombination
+;
+
+AddCombination:
+	'addComb(' add=Combination ')'
+;
+
+DeleteCombination:
+	'delComb(' delete=Combination ')'
+;
+
+/***************************
+ * Decision Table
+ ***************************/
+// TODO wie verwendet?
+/* Entscheidungstabelle, nur strukturelle Angabe, alle Logik und Validation in Xtend
+ * Kopfzeile zur Benennung der Spalten, manuelle Entscheidung zur Formatierung ob Condition('-') oder Consequence('|')
+ * Anzahl der Bedingungen und Konsequenzen muss angegeben werden, damit spätere Überprüfbarkeit gegeben ist
+ * Formatierung als richtige Tabelle schwer, liegt nicht im Fokus.
+ * 
+ */
+DecisionTable:
+	'decisionTable' name=ID 
+	('('	numberConditionRows=INT ',' numberConsequenceRows=INT ')')?
+	'['
+//	headerRow=HeaderRow
+	rows+=Row*
+	']'	
+;
+
+enum DecisionTablePart:
+	row | numberConditionRows | numberConsequenceRows | name | RowRef
+;
+
+DecisionTableRef:
+	decisionTable=[DecisionTable] '.' part=DecisionTablePart
+;
+//HeaderRow:
+//	headerLabels+=ValidID (('--' headerLabels+=ValidID) | ('||' headerLabels+=ValidID))*
+//;
+
+Row:
+	'i=' index=INT ':'
+	conditions+=Condition ('-' conditions+=Condition)*
+	consequences+=Consequence ('|' consequences+=Consequence)*
+;
+
+enum RowPart:
+	index | conditions | consequences
+;
+
+RowRef:
+	row=[Row] '.' part=RowPart
+;
+
+/* überprüfbare boolische Bedingung bezogen auf numerischen Wert , derzeit nur 2wertig angedacht, 3wertig kann sicher ergänzt werden*/
+Condition:
+	condName = ValidID '('
+	expression= ConditionTargets op=RelOpTo INT
+	')'
+;
+
+RelOpTo:
+	'=' | '<' | '>' | '!=' | '<''=' | '>''='
+;
+
+/* Referenzen zu Attributen und Kombinationen, die in den Conditions verwendet werden können. */
+/* Conditions können CombiniedAttributes enthalten. Es soll abgefragt werden können. 
+ * CombiniedAttr können allerdings kein direktes Ziel darstellen, da sie berechnet werden.
+ */
+ConditionTargets:
+	AttributeRef | CombinedAttributeRef | CombinationRef
+;
+
+/* Auswirkungen wenn die Bedingungen erfüllt werden, bisher nur auf zwei mögliche Ziele ausgerichtet, Attr+Combination */
+Consequence:
+	target=ConsequenceRef
+	effect=[Raise] //Noch abändern bzw. genauer
+;
+
+/* Auswirkungen nur auf Attr und Combination, da combinedAttr berechnet wird */
+enum ConsequenceRef:
+	AttributeRef | CombinationRef
+;

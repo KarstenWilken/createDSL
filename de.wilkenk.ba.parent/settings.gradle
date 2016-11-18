@@ -1,0 +1,3 @@
+include 'de.wilkenk.ba'
+include 'de.wilkenk.ba.ide'
+include 'de.wilkenk.ba.web'
