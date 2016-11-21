@@ -27,14 +27,15 @@ import de.wilkenk.ba.create.DecisionTableRef;
 import de.wilkenk.ba.create.DeleteCombination;
 import de.wilkenk.ba.create.Dice;
 import de.wilkenk.ba.create.DiceBasedRaise;
+import de.wilkenk.ba.create.DicePart;
 import de.wilkenk.ba.create.DiceRef;
 import de.wilkenk.ba.create.Domainmodel;
 import de.wilkenk.ba.create.Entity;
 import de.wilkenk.ba.create.InitAttribute;
 import de.wilkenk.ba.create.InitialAttributeDecision;
+import de.wilkenk.ba.create.IntRef;
 import de.wilkenk.ba.create.MathExpression;
 import de.wilkenk.ba.create.Multiplication;
-import de.wilkenk.ba.create.Operation;
 import de.wilkenk.ba.create.Property;
 import de.wilkenk.ba.create.Raise;
 import de.wilkenk.ba.create.Row;
@@ -131,11 +132,6 @@ public class CreateAdapterFactory extends AdapterFactoryImpl
         return createPropertyAdapter();
       }
       @Override
-      public Adapter caseOperation(Operation object)
-      {
-        return createOperationAdapter();
-      }
-      @Override
       public Adapter caseAttribute(Attribute object)
       {
         return createAttributeAdapter();
@@ -176,6 +172,11 @@ public class CreateAdapterFactory extends AdapterFactoryImpl
         return createMathExpressionAdapter();
       }
       @Override
+      public Adapter caseIntRef(IntRef object)
+      {
+        return createIntRefAdapter();
+      }
+      @Override
       public Adapter caseCombination(Combination object)
       {
         return createCombinationAdapter();
@@ -199,6 +200,11 @@ public class CreateAdapterFactory extends AdapterFactoryImpl
       public Adapter caseDiceRef(DiceRef object)
       {
         return createDiceRefAdapter();
+      }
+      @Override
+      public Adapter caseDicePart(DicePart object)
+      {
+        return createDicePartAdapter();
       }
       @Override
       public Adapter caseRaise(Raise object)
@@ -373,21 +379,6 @@ public class CreateAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.wilkenk.ba.create.Operation <em>Operation</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.wilkenk.ba.create.Operation
-   * @generated
-   */
-  public Adapter createOperationAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link de.wilkenk.ba.create.Attribute <em>Attribute</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -508,6 +499,21 @@ public class CreateAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link de.wilkenk.ba.create.IntRef <em>Int Ref</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.wilkenk.ba.create.IntRef
+   * @generated
+   */
+  public Adapter createIntRefAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link de.wilkenk.ba.create.Combination <em>Combination</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -578,6 +584,21 @@ public class CreateAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createDiceRefAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.wilkenk.ba.create.DicePart <em>Dice Part</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.wilkenk.ba.create.DicePart
+   * @generated
+   */
+  public Adapter createDicePartAdapter()
   {
     return null;
   }

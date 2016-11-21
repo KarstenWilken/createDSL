@@ -69,22 +69,13 @@ public interface CreatePackage extends EPackage
   int DOMAINMODEL = 0;
 
   /**
-   * The feature id for the '<em><b>Import Section</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DOMAINMODEL__IMPORT_SECTION = 0;
-
-  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DOMAINMODEL__NAME = 1;
+  int DOMAINMODEL__NAME = 0;
 
   /**
    * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -93,7 +84,7 @@ public interface CreatePackage extends EPackage
    * @generated
    * @ordered
    */
-  int DOMAINMODEL__ELEMENTS = 2;
+  int DOMAINMODEL__ELEMENTS = 1;
 
   /**
    * The number of structural features of the '<em>Domainmodel</em>' class.
@@ -102,7 +93,7 @@ public interface CreatePackage extends EPackage
    * @generated
    * @ordered
    */
-  int DOMAINMODEL_FEATURE_COUNT = 3;
+  int DOMAINMODEL_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link de.wilkenk.ba.create.impl.EntityImpl <em>Entity</em>}' class.
@@ -161,22 +152,13 @@ public interface CreatePackage extends EPackage
   int CHARACTER__PROPERTIES = ENTITY_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Operations</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CHARACTER__OPERATIONS = ENTITY_FEATURE_COUNT + 1;
-
-  /**
    * The number of structural features of the '<em>Character</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CHARACTER_FEATURE_COUNT = ENTITY_FEATURE_COUNT + 2;
+  int CHARACTER_FEATURE_COUNT = ENTITY_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link de.wilkenk.ba.create.impl.PropertyImpl <em>Property</em>}' class.
@@ -225,61 +207,6 @@ public interface CreatePackage extends EPackage
   int PROPERTY_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link de.wilkenk.ba.create.impl.OperationImpl <em>Operation</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.wilkenk.ba.create.impl.OperationImpl
-   * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getOperation()
-   * @generated
-   */
-  int OPERATION = 4;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OPERATION__NAME = 0;
-
-  /**
-   * The feature id for the '<em><b>Params</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OPERATION__PARAMS = 1;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OPERATION__TYPE = 2;
-
-  /**
-   * The feature id for the '<em><b>Body</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OPERATION__BODY = 3;
-
-  /**
-   * The number of structural features of the '<em>Operation</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OPERATION_FEATURE_COUNT = 4;
-
-  /**
    * The meta object id for the '{@link de.wilkenk.ba.create.impl.AttributeImpl <em>Attribute</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -287,7 +214,7 @@ public interface CreatePackage extends EPackage
    * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getAttribute()
    * @generated
    */
-  int ATTRIBUTE = 5;
+  int ATTRIBUTE = 4;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -299,31 +226,22 @@ public interface CreatePackage extends EPackage
   int ATTRIBUTE__NAME = ENTITY__NAME;
 
   /**
-   * The feature id for the '<em><b>Min Value</b></em>' attribute.
+   * The feature id for the '<em><b>Int Value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ATTRIBUTE__MIN_VALUE = ENTITY_FEATURE_COUNT + 0;
+  int ATTRIBUTE__INT_VALUE = ENTITY_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Max Value</b></em>' attribute.
+   * The feature id for the '<em><b>String Value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ATTRIBUTE__MAX_VALUE = ENTITY_FEATURE_COUNT + 1;
-
-  /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ATTRIBUTE__VALUE = ENTITY_FEATURE_COUNT + 2;
+  int ATTRIBUTE__STRING_VALUE = ENTITY_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Initial Value</b></em>' containment reference.
@@ -332,7 +250,34 @@ public interface CreatePackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATTRIBUTE__INITIAL_VALUE = ENTITY_FEATURE_COUNT + 3;
+  int ATTRIBUTE__INITIAL_VALUE = ENTITY_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Value Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATTRIBUTE__VALUE_TYPE = ENTITY_FEATURE_COUNT + 3;
+
+  /**
+   * The feature id for the '<em><b>Min Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATTRIBUTE__MIN_VALUE = ENTITY_FEATURE_COUNT + 4;
+
+  /**
+   * The feature id for the '<em><b>Max Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATTRIBUTE__MAX_VALUE = ENTITY_FEATURE_COUNT + 5;
 
   /**
    * The feature id for the '<em><b>Category</b></em>' reference.
@@ -341,7 +286,7 @@ public interface CreatePackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATTRIBUTE__CATEGORY = ENTITY_FEATURE_COUNT + 4;
+  int ATTRIBUTE__CATEGORY = ENTITY_FEATURE_COUNT + 6;
 
   /**
    * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -350,7 +295,7 @@ public interface CreatePackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATTRIBUTE__DESCRIPTION = ENTITY_FEATURE_COUNT + 5;
+  int ATTRIBUTE__DESCRIPTION = ENTITY_FEATURE_COUNT + 7;
 
   /**
    * The number of structural features of the '<em>Attribute</em>' class.
@@ -359,7 +304,7 @@ public interface CreatePackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATTRIBUTE_FEATURE_COUNT = ENTITY_FEATURE_COUNT + 6;
+  int ATTRIBUTE_FEATURE_COUNT = ENTITY_FEATURE_COUNT + 8;
 
   /**
    * The meta object id for the '{@link de.wilkenk.ba.create.impl.MathExpressionImpl <em>Math Expression</em>}' class.
@@ -369,7 +314,7 @@ public interface CreatePackage extends EPackage
    * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getMathExpression()
    * @generated
    */
-  int MATH_EXPRESSION = 12;
+  int MATH_EXPRESSION = 11;
 
   /**
    * The number of structural features of the '<em>Math Expression</em>' class.
@@ -388,7 +333,7 @@ public interface CreatePackage extends EPackage
    * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getAttributeRef()
    * @generated
    */
-  int ATTRIBUTE_REF = 6;
+  int ATTRIBUTE_REF = 5;
 
   /**
    * The feature id for the '<em><b>Attribute</b></em>' reference.
@@ -425,7 +370,7 @@ public interface CreatePackage extends EPackage
    * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getInitialAttributeDecision()
    * @generated
    */
-  int INITIAL_ATTRIBUTE_DECISION = 7;
+  int INITIAL_ATTRIBUTE_DECISION = 6;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -453,7 +398,7 @@ public interface CreatePackage extends EPackage
    * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getInitAttribute()
    * @generated
    */
-  int INIT_ATTRIBUTE = 8;
+  int INIT_ATTRIBUTE = 7;
 
   /**
    * The feature id for the '<em><b>Init Value</b></em>' attribute.
@@ -465,13 +410,13 @@ public interface CreatePackage extends EPackage
   int INIT_ATTRIBUTE__INIT_VALUE = 0;
 
   /**
-   * The feature id for the '<em><b>Dice Ref</b></em>' containment reference.
+   * The feature id for the '<em><b>Dice Event</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INIT_ATTRIBUTE__DICE_REF = 1;
+  int INIT_ATTRIBUTE__DICE_EVENT = 1;
 
   /**
    * The number of structural features of the '<em>Init Attribute</em>' class.
@@ -490,7 +435,7 @@ public interface CreatePackage extends EPackage
    * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getCategory()
    * @generated
    */
-  int CATEGORY = 9;
+  int CATEGORY = 8;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -518,7 +463,7 @@ public interface CreatePackage extends EPackage
    * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getCombinedAttribute()
    * @generated
    */
-  int COMBINED_ATTRIBUTE = 10;
+  int COMBINED_ATTRIBUTE = 9;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -591,7 +536,7 @@ public interface CreatePackage extends EPackage
    * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getConditionTargets()
    * @generated
    */
-  int CONDITION_TARGETS = 32;
+  int CONDITION_TARGETS = 33;
 
   /**
    * The number of structural features of the '<em>Condition Targets</em>' class.
@@ -610,7 +555,7 @@ public interface CreatePackage extends EPackage
    * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getCombinedAttributeRef()
    * @generated
    */
-  int COMBINED_ATTRIBUTE_REF = 11;
+  int COMBINED_ATTRIBUTE_REF = 10;
 
   /**
    * The feature id for the '<em><b>Combined Attribute</b></em>' reference.
@@ -638,6 +583,34 @@ public interface CreatePackage extends EPackage
    * @ordered
    */
   int COMBINED_ATTRIBUTE_REF_FEATURE_COUNT = CONDITION_TARGETS_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link de.wilkenk.ba.create.impl.IntRefImpl <em>Int Ref</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.wilkenk.ba.create.impl.IntRefImpl
+   * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getIntRef()
+   * @generated
+   */
+  int INT_REF = 12;
+
+  /**
+   * The feature id for the '<em><b>Int Val</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INT_REF__INT_VAL = MATH_EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Int Ref</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INT_REF_FEATURE_COUNT = MATH_EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link de.wilkenk.ba.create.impl.CombinationImpl <em>Combination</em>}' class.
@@ -816,7 +789,7 @@ public interface CreatePackage extends EPackage
   int DICE_REF__DICE = MATH_EXPRESSION_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Part</b></em>' attribute.
+   * The feature id for the '<em><b>Part</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -834,6 +807,34 @@ public interface CreatePackage extends EPackage
   int DICE_REF_FEATURE_COUNT = MATH_EXPRESSION_FEATURE_COUNT + 2;
 
   /**
+   * The meta object id for the '{@link de.wilkenk.ba.create.impl.DicePartImpl <em>Dice Part</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.wilkenk.ba.create.impl.DicePartImpl
+   * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getDicePart()
+   * @generated
+   */
+  int DICE_PART = 18;
+
+  /**
+   * The feature id for the '<em><b>Throw</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DICE_PART__THROW = 0;
+
+  /**
+   * The number of structural features of the '<em>Dice Part</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DICE_PART_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link de.wilkenk.ba.create.impl.RaiseImpl <em>Raise</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -841,7 +842,7 @@ public interface CreatePackage extends EPackage
    * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getRaise()
    * @generated
    */
-  int RAISE = 18;
+  int RAISE = 19;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -869,7 +870,7 @@ public interface CreatePackage extends EPackage
    * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getAttributeRaise()
    * @generated
    */
-  int ATTRIBUTE_RAISE = 19;
+  int ATTRIBUTE_RAISE = 20;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -924,7 +925,7 @@ public interface CreatePackage extends EPackage
    * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getAttributeRaiseType()
    * @generated
    */
-  int ATTRIBUTE_RAISE_TYPE = 20;
+  int ATTRIBUTE_RAISE_TYPE = 21;
 
   /**
    * The number of structural features of the '<em>Attribute Raise Type</em>' class.
@@ -943,7 +944,7 @@ public interface CreatePackage extends EPackage
    * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getDiceBasedRaise()
    * @generated
    */
-  int DICE_BASED_RAISE = 21;
+  int DICE_BASED_RAISE = 22;
 
   /**
    * The feature id for the '<em><b>Dice To Use</b></em>' reference.
@@ -980,7 +981,7 @@ public interface CreatePackage extends EPackage
    * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getConstantBasedRaise()
    * @generated
    */
-  int CONSTANT_BASED_RAISE = 22;
+  int CONSTANT_BASED_RAISE = 23;
 
   /**
    * The feature id for the '<em><b>Result</b></em>' attribute.
@@ -1008,7 +1009,7 @@ public interface CreatePackage extends EPackage
    * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getCombinationRaise()
    * @generated
    */
-  int COMBINATION_RAISE = 23;
+  int COMBINATION_RAISE = 24;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1045,7 +1046,7 @@ public interface CreatePackage extends EPackage
    * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getCombinationRaiseType()
    * @generated
    */
-  int COMBINATION_RAISE_TYPE = 24;
+  int COMBINATION_RAISE_TYPE = 25;
 
   /**
    * The number of structural features of the '<em>Combination Raise Type</em>' class.
@@ -1064,7 +1065,7 @@ public interface CreatePackage extends EPackage
    * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getAddCombination()
    * @generated
    */
-  int ADD_COMBINATION = 25;
+  int ADD_COMBINATION = 26;
 
   /**
    * The feature id for the '<em><b>Add</b></em>' containment reference.
@@ -1092,7 +1093,7 @@ public interface CreatePackage extends EPackage
    * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getDeleteCombination()
    * @generated
    */
-  int DELETE_COMBINATION = 26;
+  int DELETE_COMBINATION = 27;
 
   /**
    * The feature id for the '<em><b>Delete</b></em>' containment reference.
@@ -1120,7 +1121,7 @@ public interface CreatePackage extends EPackage
    * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getDecisionTable()
    * @generated
    */
-  int DECISION_TABLE = 27;
+  int DECISION_TABLE = 28;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1175,7 +1176,7 @@ public interface CreatePackage extends EPackage
    * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getDecisionTableRef()
    * @generated
    */
-  int DECISION_TABLE_REF = 28;
+  int DECISION_TABLE_REF = 29;
 
   /**
    * The feature id for the '<em><b>Decision Table</b></em>' reference.
@@ -1212,7 +1213,7 @@ public interface CreatePackage extends EPackage
    * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getRow()
    * @generated
    */
-  int ROW = 29;
+  int ROW = 30;
 
   /**
    * The feature id for the '<em><b>Index</b></em>' attribute.
@@ -1258,7 +1259,7 @@ public interface CreatePackage extends EPackage
    * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getRowRef()
    * @generated
    */
-  int ROW_REF = 30;
+  int ROW_REF = 31;
 
   /**
    * The feature id for the '<em><b>Row</b></em>' reference.
@@ -1295,7 +1296,7 @@ public interface CreatePackage extends EPackage
    * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getCondition()
    * @generated
    */
-  int CONDITION = 31;
+  int CONDITION = 32;
 
   /**
    * The feature id for the '<em><b>Cond Name</b></em>' attribute.
@@ -1341,7 +1342,7 @@ public interface CreatePackage extends EPackage
    * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getConsequence()
    * @generated
    */
-  int CONSEQUENCE = 33;
+  int CONSEQUENCE = 34;
 
   /**
    * The feature id for the '<em><b>Target</b></em>' attribute.
@@ -1378,7 +1379,7 @@ public interface CreatePackage extends EPackage
    * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getAddition()
    * @generated
    */
-  int ADDITION = 34;
+  int ADDITION = 35;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1424,7 +1425,7 @@ public interface CreatePackage extends EPackage
    * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getMultiplication()
    * @generated
    */
-  int MULTIPLICATION = 35;
+  int MULTIPLICATION = 36;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1470,7 +1471,7 @@ public interface CreatePackage extends EPackage
    * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getAttributePart()
    * @generated
    */
-  int ATTRIBUTE_PART = 36;
+  int ATTRIBUTE_PART = 37;
 
   /**
    * The meta object id for the '{@link de.wilkenk.ba.create.CombinedAttributePart <em>Combined Attribute Part</em>}' enum.
@@ -1480,7 +1481,7 @@ public interface CreatePackage extends EPackage
    * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getCombinedAttributePart()
    * @generated
    */
-  int COMBINED_ATTRIBUTE_PART = 37;
+  int COMBINED_ATTRIBUTE_PART = 38;
 
   /**
    * The meta object id for the '{@link de.wilkenk.ba.create.CombinationPart <em>Combination Part</em>}' enum.
@@ -1490,17 +1491,7 @@ public interface CreatePackage extends EPackage
    * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getCombinationPart()
    * @generated
    */
-  int COMBINATION_PART = 38;
-
-  /**
-   * The meta object id for the '{@link de.wilkenk.ba.create.DicePart <em>Dice Part</em>}' enum.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.wilkenk.ba.create.DicePart
-   * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getDicePart()
-   * @generated
-   */
-  int DICE_PART = 39;
+  int COMBINATION_PART = 39;
 
   /**
    * The meta object id for the '{@link de.wilkenk.ba.create.DecisionTablePart <em>Decision Table Part</em>}' enum.
@@ -1542,17 +1533,6 @@ public interface CreatePackage extends EPackage
    * @generated
    */
   EClass getDomainmodel();
-
-  /**
-   * Returns the meta object for the containment reference '{@link de.wilkenk.ba.create.Domainmodel#getImportSection <em>Import Section</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Import Section</em>'.
-   * @see de.wilkenk.ba.create.Domainmodel#getImportSection()
-   * @see #getDomainmodel()
-   * @generated
-   */
-  EReference getDomainmodel_ImportSection();
 
   /**
    * Returns the meta object for the attribute '{@link de.wilkenk.ba.create.Domainmodel#getName <em>Name</em>}'.
@@ -1619,17 +1599,6 @@ public interface CreatePackage extends EPackage
   EReference getCharacter_Properties();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.wilkenk.ba.create.Character#getOperations <em>Operations</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Operations</em>'.
-   * @see de.wilkenk.ba.create.Character#getOperations()
-   * @see #getCharacter()
-   * @generated
-   */
-  EReference getCharacter_Operations();
-
-  /**
    * Returns the meta object for class '{@link de.wilkenk.ba.create.Property <em>Property</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1673,60 +1642,6 @@ public interface CreatePackage extends EPackage
   EReference getProperty_CombValue();
 
   /**
-   * Returns the meta object for class '{@link de.wilkenk.ba.create.Operation <em>Operation</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Operation</em>'.
-   * @see de.wilkenk.ba.create.Operation
-   * @generated
-   */
-  EClass getOperation();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.wilkenk.ba.create.Operation#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.wilkenk.ba.create.Operation#getName()
-   * @see #getOperation()
-   * @generated
-   */
-  EAttribute getOperation_Name();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link de.wilkenk.ba.create.Operation#getParams <em>Params</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Params</em>'.
-   * @see de.wilkenk.ba.create.Operation#getParams()
-   * @see #getOperation()
-   * @generated
-   */
-  EReference getOperation_Params();
-
-  /**
-   * Returns the meta object for the containment reference '{@link de.wilkenk.ba.create.Operation#getType <em>Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Type</em>'.
-   * @see de.wilkenk.ba.create.Operation#getType()
-   * @see #getOperation()
-   * @generated
-   */
-  EReference getOperation_Type();
-
-  /**
-   * Returns the meta object for the containment reference '{@link de.wilkenk.ba.create.Operation#getBody <em>Body</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Body</em>'.
-   * @see de.wilkenk.ba.create.Operation#getBody()
-   * @see #getOperation()
-   * @generated
-   */
-  EReference getOperation_Body();
-
-  /**
    * Returns the meta object for class '{@link de.wilkenk.ba.create.Attribute <em>Attribute</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1735,6 +1650,50 @@ public interface CreatePackage extends EPackage
    * @generated
    */
   EClass getAttribute();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.wilkenk.ba.create.Attribute#getIntValue <em>Int Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Int Value</em>'.
+   * @see de.wilkenk.ba.create.Attribute#getIntValue()
+   * @see #getAttribute()
+   * @generated
+   */
+  EAttribute getAttribute_IntValue();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.wilkenk.ba.create.Attribute#getStringValue <em>String Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>String Value</em>'.
+   * @see de.wilkenk.ba.create.Attribute#getStringValue()
+   * @see #getAttribute()
+   * @generated
+   */
+  EAttribute getAttribute_StringValue();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.wilkenk.ba.create.Attribute#getInitialValue <em>Initial Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Initial Value</em>'.
+   * @see de.wilkenk.ba.create.Attribute#getInitialValue()
+   * @see #getAttribute()
+   * @generated
+   */
+  EReference getAttribute_InitialValue();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.wilkenk.ba.create.Attribute#getValueType <em>Value Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value Type</em>'.
+   * @see de.wilkenk.ba.create.Attribute#getValueType()
+   * @see #getAttribute()
+   * @generated
+   */
+  EAttribute getAttribute_ValueType();
 
   /**
    * Returns the meta object for the attribute '{@link de.wilkenk.ba.create.Attribute#getMinValue <em>Min Value</em>}'.
@@ -1757,28 +1716,6 @@ public interface CreatePackage extends EPackage
    * @generated
    */
   EAttribute getAttribute_MaxValue();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.wilkenk.ba.create.Attribute#getValue <em>Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
-   * @see de.wilkenk.ba.create.Attribute#getValue()
-   * @see #getAttribute()
-   * @generated
-   */
-  EAttribute getAttribute_Value();
-
-  /**
-   * Returns the meta object for the containment reference '{@link de.wilkenk.ba.create.Attribute#getInitialValue <em>Initial Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Initial Value</em>'.
-   * @see de.wilkenk.ba.create.Attribute#getInitialValue()
-   * @see #getAttribute()
-   * @generated
-   */
-  EReference getAttribute_InitialValue();
 
   /**
    * Returns the meta object for the reference '{@link de.wilkenk.ba.create.Attribute#getCategory <em>Category</em>}'.
@@ -1877,15 +1814,15 @@ public interface CreatePackage extends EPackage
   EAttribute getInitAttribute_InitValue();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.wilkenk.ba.create.InitAttribute#getDiceRef <em>Dice Ref</em>}'.
+   * Returns the meta object for the containment reference '{@link de.wilkenk.ba.create.InitAttribute#getDiceEvent <em>Dice Event</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Dice Ref</em>'.
-   * @see de.wilkenk.ba.create.InitAttribute#getDiceRef()
+   * @return the meta object for the containment reference '<em>Dice Event</em>'.
+   * @see de.wilkenk.ba.create.InitAttribute#getDiceEvent()
    * @see #getInitAttribute()
    * @generated
    */
-  EReference getInitAttribute_DiceRef();
+  EReference getInitAttribute_DiceEvent();
 
   /**
    * Returns the meta object for class '{@link de.wilkenk.ba.create.Category <em>Category</em>}'.
@@ -2003,6 +1940,27 @@ public interface CreatePackage extends EPackage
    * @generated
    */
   EClass getMathExpression();
+
+  /**
+   * Returns the meta object for class '{@link de.wilkenk.ba.create.IntRef <em>Int Ref</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Int Ref</em>'.
+   * @see de.wilkenk.ba.create.IntRef
+   * @generated
+   */
+  EClass getIntRef();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.wilkenk.ba.create.IntRef#getIntVal <em>Int Val</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Int Val</em>'.
+   * @see de.wilkenk.ba.create.IntRef#getIntVal()
+   * @see #getIntRef()
+   * @generated
+   */
+  EAttribute getIntRef_IntVal();
 
   /**
    * Returns the meta object for class '{@link de.wilkenk.ba.create.Combination <em>Combination</em>}'.
@@ -2143,15 +2101,36 @@ public interface CreatePackage extends EPackage
   EReference getDiceRef_Dice();
 
   /**
-   * Returns the meta object for the attribute '{@link de.wilkenk.ba.create.DiceRef#getPart <em>Part</em>}'.
+   * Returns the meta object for the containment reference '{@link de.wilkenk.ba.create.DiceRef#getPart <em>Part</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Part</em>'.
+   * @return the meta object for the containment reference '<em>Part</em>'.
    * @see de.wilkenk.ba.create.DiceRef#getPart()
    * @see #getDiceRef()
    * @generated
    */
-  EAttribute getDiceRef_Part();
+  EReference getDiceRef_Part();
+
+  /**
+   * Returns the meta object for class '{@link de.wilkenk.ba.create.DicePart <em>Dice Part</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Dice Part</em>'.
+   * @see de.wilkenk.ba.create.DicePart
+   * @generated
+   */
+  EClass getDicePart();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.wilkenk.ba.create.DicePart#getThrow <em>Throw</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Throw</em>'.
+   * @see de.wilkenk.ba.create.DicePart#getThrow()
+   * @see #getDicePart()
+   * @generated
+   */
+  EAttribute getDicePart_Throw();
 
   /**
    * Returns the meta object for class '{@link de.wilkenk.ba.create.Raise <em>Raise</em>}'.
@@ -2694,16 +2673,6 @@ public interface CreatePackage extends EPackage
   EEnum getCombinationPart();
 
   /**
-   * Returns the meta object for enum '{@link de.wilkenk.ba.create.DicePart <em>Dice Part</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>Dice Part</em>'.
-   * @see de.wilkenk.ba.create.DicePart
-   * @generated
-   */
-  EEnum getDicePart();
-
-  /**
    * Returns the meta object for enum '{@link de.wilkenk.ba.create.DecisionTablePart <em>Decision Table Part</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2767,14 +2736,6 @@ public interface CreatePackage extends EPackage
     EClass DOMAINMODEL = eINSTANCE.getDomainmodel();
 
     /**
-     * The meta object literal for the '<em><b>Import Section</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference DOMAINMODEL__IMPORT_SECTION = eINSTANCE.getDomainmodel_ImportSection();
-
-    /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2827,14 +2788,6 @@ public interface CreatePackage extends EPackage
     EReference CHARACTER__PROPERTIES = eINSTANCE.getCharacter_Properties();
 
     /**
-     * The meta object literal for the '<em><b>Operations</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CHARACTER__OPERATIONS = eINSTANCE.getCharacter_Operations();
-
-    /**
      * The meta object literal for the '{@link de.wilkenk.ba.create.impl.PropertyImpl <em>Property</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2869,48 +2822,6 @@ public interface CreatePackage extends EPackage
     EReference PROPERTY__COMB_VALUE = eINSTANCE.getProperty_CombValue();
 
     /**
-     * The meta object literal for the '{@link de.wilkenk.ba.create.impl.OperationImpl <em>Operation</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.wilkenk.ba.create.impl.OperationImpl
-     * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getOperation()
-     * @generated
-     */
-    EClass OPERATION = eINSTANCE.getOperation();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute OPERATION__NAME = eINSTANCE.getOperation_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Params</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference OPERATION__PARAMS = eINSTANCE.getOperation_Params();
-
-    /**
-     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference OPERATION__TYPE = eINSTANCE.getOperation_Type();
-
-    /**
-     * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference OPERATION__BODY = eINSTANCE.getOperation_Body();
-
-    /**
      * The meta object literal for the '{@link de.wilkenk.ba.create.impl.AttributeImpl <em>Attribute</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2919,6 +2830,38 @@ public interface CreatePackage extends EPackage
      * @generated
      */
     EClass ATTRIBUTE = eINSTANCE.getAttribute();
+
+    /**
+     * The meta object literal for the '<em><b>Int Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ATTRIBUTE__INT_VALUE = eINSTANCE.getAttribute_IntValue();
+
+    /**
+     * The meta object literal for the '<em><b>String Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ATTRIBUTE__STRING_VALUE = eINSTANCE.getAttribute_StringValue();
+
+    /**
+     * The meta object literal for the '<em><b>Initial Value</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ATTRIBUTE__INITIAL_VALUE = eINSTANCE.getAttribute_InitialValue();
+
+    /**
+     * The meta object literal for the '<em><b>Value Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ATTRIBUTE__VALUE_TYPE = eINSTANCE.getAttribute_ValueType();
 
     /**
      * The meta object literal for the '<em><b>Min Value</b></em>' attribute feature.
@@ -2935,22 +2878,6 @@ public interface CreatePackage extends EPackage
      * @generated
      */
     EAttribute ATTRIBUTE__MAX_VALUE = eINSTANCE.getAttribute_MaxValue();
-
-    /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ATTRIBUTE__VALUE = eINSTANCE.getAttribute_Value();
-
-    /**
-     * The meta object literal for the '<em><b>Initial Value</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference ATTRIBUTE__INITIAL_VALUE = eINSTANCE.getAttribute_InitialValue();
 
     /**
      * The meta object literal for the '<em><b>Category</b></em>' reference feature.
@@ -3031,12 +2958,12 @@ public interface CreatePackage extends EPackage
     EAttribute INIT_ATTRIBUTE__INIT_VALUE = eINSTANCE.getInitAttribute_InitValue();
 
     /**
-     * The meta object literal for the '<em><b>Dice Ref</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Dice Event</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference INIT_ATTRIBUTE__DICE_REF = eINSTANCE.getInitAttribute_DiceRef();
+    EReference INIT_ATTRIBUTE__DICE_EVENT = eINSTANCE.getInitAttribute_DiceEvent();
 
     /**
      * The meta object literal for the '{@link de.wilkenk.ba.create.impl.CategoryImpl <em>Category</em>}' class.
@@ -3133,6 +3060,24 @@ public interface CreatePackage extends EPackage
      * @generated
      */
     EClass MATH_EXPRESSION = eINSTANCE.getMathExpression();
+
+    /**
+     * The meta object literal for the '{@link de.wilkenk.ba.create.impl.IntRefImpl <em>Int Ref</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.wilkenk.ba.create.impl.IntRefImpl
+     * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getIntRef()
+     * @generated
+     */
+    EClass INT_REF = eINSTANCE.getIntRef();
+
+    /**
+     * The meta object literal for the '<em><b>Int Val</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute INT_REF__INT_VAL = eINSTANCE.getIntRef_IntVal();
 
     /**
      * The meta object literal for the '{@link de.wilkenk.ba.create.impl.CombinationImpl <em>Combination</em>}' class.
@@ -3249,12 +3194,30 @@ public interface CreatePackage extends EPackage
     EReference DICE_REF__DICE = eINSTANCE.getDiceRef_Dice();
 
     /**
-     * The meta object literal for the '<em><b>Part</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Part</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute DICE_REF__PART = eINSTANCE.getDiceRef_Part();
+    EReference DICE_REF__PART = eINSTANCE.getDiceRef_Part();
+
+    /**
+     * The meta object literal for the '{@link de.wilkenk.ba.create.impl.DicePartImpl <em>Dice Part</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.wilkenk.ba.create.impl.DicePartImpl
+     * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getDicePart()
+     * @generated
+     */
+    EClass DICE_PART = eINSTANCE.getDicePart();
+
+    /**
+     * The meta object literal for the '<em><b>Throw</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DICE_PART__THROW = eINSTANCE.getDicePart_Throw();
 
     /**
      * The meta object literal for the '{@link de.wilkenk.ba.create.impl.RaiseImpl <em>Raise</em>}' class.
@@ -3705,16 +3668,6 @@ public interface CreatePackage extends EPackage
      * @generated
      */
     EEnum COMBINATION_PART = eINSTANCE.getCombinationPart();
-
-    /**
-     * The meta object literal for the '{@link de.wilkenk.ba.create.DicePart <em>Dice Part</em>}' enum.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.wilkenk.ba.create.DicePart
-     * @see de.wilkenk.ba.create.impl.CreatePackageImpl#getDicePart()
-     * @generated
-     */
-    EEnum DICE_PART = eINSTANCE.getDicePart();
 
     /**
      * The meta object literal for the '{@link de.wilkenk.ba.create.DecisionTablePart <em>Decision Table Part</em>}' enum.

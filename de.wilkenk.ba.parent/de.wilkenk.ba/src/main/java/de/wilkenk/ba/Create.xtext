@@ -7,7 +7,7 @@ generate create "http://www.wilkenk.de/ba/Create"
  * da einige Aspekte nicht nur Einfluss auf die Charaktererstellung haben, sondern in der "Welt" verwurzelt sind.
  */
 Domainmodel:
-	importSection=XImportSection?
+//	importSection=XImportSection?
 	'game' name = QualifiedName '('
 		elements+=Entity*
 	')';
@@ -20,7 +20,7 @@ Entity:
 Character:
 	'character' name = QualifiedName '('
 		properties += Property*
-		(operations += Operation)*
+//		(operations += Operation)*
 	')'
 ;
 
@@ -32,11 +32,11 @@ Property:
 ;
 
 /* Möglichkeit eigene Methoden zu 'bauen' zur Erweiterung der Charaktermöglichkeiten, eventuell weg? (nice to have) */
-Operation:
-    'op' name = ValidID 
-		'('(params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)?')' ':' type=JvmTypeReference 
-			body=XBlockExpression
-;
+//Operation:
+//    'op' name = ValidID 
+//		'('(params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)?')' ':' type=JvmTypeReference 
+//			body=XBlockExpression
+//;
 
 /***************************
  * Attribute 
@@ -47,11 +47,12 @@ Operation:
  */
 Attribute:
 	'attribute' name = QualifiedName  '('
-	('range[' minValue = INT ',' maxValue = INT ']')?
-	('value:' value=INT)?
+	('value:' (intValue=INT | stringValue=STRING))?
 	('initialValue:' initialValue = InitialAttributeDecision)?
+	('type:' valueType= ('Integer' | 'String'))?
+	('range[' minValue = INT ',' maxValue = INT ']')?
 	('category:'category = [Category])? 
-	('description:' description = ID )?
+	('description:' description = STRING )?
 	')'
 ;
 
@@ -74,12 +75,12 @@ InitialAttributeDecision:
 
 /* Initialwert kann Zahl oder Würfelergebnis sein */
 InitAttribute:
-	initValue=INT | diceRef=DiceRef
+	'value:' initValue=INT | 'dice(' diceEvent=MathExpression ')'
 ;
 
 /* angedacht zur Kategorisierung von Eigenschaften */
 Category:
-	'category' name = ID
+	'category' name = STRING
 ;
 
 /* kombiniertes Attribut, Wert setzt sich aus mehreren Attributen zusammen (berechneter Wert)
@@ -90,7 +91,7 @@ CombinedAttribute:
 	'range[' minValue = INT ',' maxValue = INT ']' 
 	combValue = MathExpression
 	('category:'category=[Category])? 
-	('description:' description = ID )?
+	('description:' description = STRING )?
 	')'
 ;
 
@@ -125,9 +126,14 @@ Multiplication returns MathExpression:
 ;
 
 Primary returns MathExpression:
+	IntRef |
 	AttributeRef |
 	DiceRef |
 	'(' Addition ')'
+;
+
+IntRef:
+	intVal = INT
 ;
 
 /***************************
@@ -183,9 +189,8 @@ DiceRef:
 /* Liste der möglichen Variablen, 
  * muss bei Veränderung von Dice angepasst/ergänzt werden
  */
-enum DicePart:
-	name | throwValue |maxValue
-	//TODO eventuell nur throwValue?
+DicePart:
+	throw = 'throw'
 ;
 
 /***************************

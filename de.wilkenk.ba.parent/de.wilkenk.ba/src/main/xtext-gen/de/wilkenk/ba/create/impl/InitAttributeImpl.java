@@ -4,8 +4,8 @@
 package de.wilkenk.ba.create.impl;
 
 import de.wilkenk.ba.create.CreatePackage;
-import de.wilkenk.ba.create.DiceRef;
 import de.wilkenk.ba.create.InitAttribute;
+import de.wilkenk.ba.create.MathExpression;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link de.wilkenk.ba.create.impl.InitAttributeImpl#getInitValue <em>Init Value</em>}</li>
- *   <li>{@link de.wilkenk.ba.create.impl.InitAttributeImpl#getDiceRef <em>Dice Ref</em>}</li>
+ *   <li>{@link de.wilkenk.ba.create.impl.InitAttributeImpl#getDiceEvent <em>Dice Event</em>}</li>
  * </ul>
  *
  * @generated
@@ -53,14 +53,14 @@ public class InitAttributeImpl extends MinimalEObjectImpl.Container implements I
   protected int initValue = INIT_VALUE_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getDiceRef() <em>Dice Ref</em>}' containment reference.
+   * The cached value of the '{@link #getDiceEvent() <em>Dice Event</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getDiceRef()
+   * @see #getDiceEvent()
    * @generated
    * @ordered
    */
-  protected DiceRef diceRef;
+  protected MathExpression diceEvent;
 
   /**
    * <!-- begin-user-doc -->
@@ -111,9 +111,9 @@ public class InitAttributeImpl extends MinimalEObjectImpl.Container implements I
    * <!-- end-user-doc -->
    * @generated
    */
-  public DiceRef getDiceRef()
+  public MathExpression getDiceEvent()
   {
-    return diceRef;
+    return diceEvent;
   }
 
   /**
@@ -121,13 +121,13 @@ public class InitAttributeImpl extends MinimalEObjectImpl.Container implements I
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetDiceRef(DiceRef newDiceRef, NotificationChain msgs)
+  public NotificationChain basicSetDiceEvent(MathExpression newDiceEvent, NotificationChain msgs)
   {
-    DiceRef oldDiceRef = diceRef;
-    diceRef = newDiceRef;
+    MathExpression oldDiceEvent = diceEvent;
+    diceEvent = newDiceEvent;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CreatePackage.INIT_ATTRIBUTE__DICE_REF, oldDiceRef, newDiceRef);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CreatePackage.INIT_ATTRIBUTE__DICE_EVENT, oldDiceEvent, newDiceEvent);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -138,20 +138,20 @@ public class InitAttributeImpl extends MinimalEObjectImpl.Container implements I
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setDiceRef(DiceRef newDiceRef)
+  public void setDiceEvent(MathExpression newDiceEvent)
   {
-    if (newDiceRef != diceRef)
+    if (newDiceEvent != diceEvent)
     {
       NotificationChain msgs = null;
-      if (diceRef != null)
-        msgs = ((InternalEObject)diceRef).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CreatePackage.INIT_ATTRIBUTE__DICE_REF, null, msgs);
-      if (newDiceRef != null)
-        msgs = ((InternalEObject)newDiceRef).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CreatePackage.INIT_ATTRIBUTE__DICE_REF, null, msgs);
-      msgs = basicSetDiceRef(newDiceRef, msgs);
+      if (diceEvent != null)
+        msgs = ((InternalEObject)diceEvent).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CreatePackage.INIT_ATTRIBUTE__DICE_EVENT, null, msgs);
+      if (newDiceEvent != null)
+        msgs = ((InternalEObject)newDiceEvent).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CreatePackage.INIT_ATTRIBUTE__DICE_EVENT, null, msgs);
+      msgs = basicSetDiceEvent(newDiceEvent, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CreatePackage.INIT_ATTRIBUTE__DICE_REF, newDiceRef, newDiceRef));
+      eNotify(new ENotificationImpl(this, Notification.SET, CreatePackage.INIT_ATTRIBUTE__DICE_EVENT, newDiceEvent, newDiceEvent));
   }
 
   /**
@@ -164,8 +164,8 @@ public class InitAttributeImpl extends MinimalEObjectImpl.Container implements I
   {
     switch (featureID)
     {
-      case CreatePackage.INIT_ATTRIBUTE__DICE_REF:
-        return basicSetDiceRef(null, msgs);
+      case CreatePackage.INIT_ATTRIBUTE__DICE_EVENT:
+        return basicSetDiceEvent(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -182,8 +182,8 @@ public class InitAttributeImpl extends MinimalEObjectImpl.Container implements I
     {
       case CreatePackage.INIT_ATTRIBUTE__INIT_VALUE:
         return getInitValue();
-      case CreatePackage.INIT_ATTRIBUTE__DICE_REF:
-        return getDiceRef();
+      case CreatePackage.INIT_ATTRIBUTE__DICE_EVENT:
+        return getDiceEvent();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -201,8 +201,8 @@ public class InitAttributeImpl extends MinimalEObjectImpl.Container implements I
       case CreatePackage.INIT_ATTRIBUTE__INIT_VALUE:
         setInitValue((Integer)newValue);
         return;
-      case CreatePackage.INIT_ATTRIBUTE__DICE_REF:
-        setDiceRef((DiceRef)newValue);
+      case CreatePackage.INIT_ATTRIBUTE__DICE_EVENT:
+        setDiceEvent((MathExpression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -221,8 +221,8 @@ public class InitAttributeImpl extends MinimalEObjectImpl.Container implements I
       case CreatePackage.INIT_ATTRIBUTE__INIT_VALUE:
         setInitValue(INIT_VALUE_EDEFAULT);
         return;
-      case CreatePackage.INIT_ATTRIBUTE__DICE_REF:
-        setDiceRef((DiceRef)null);
+      case CreatePackage.INIT_ATTRIBUTE__DICE_EVENT:
+        setDiceEvent((MathExpression)null);
         return;
     }
     super.eUnset(featureID);
@@ -240,8 +240,8 @@ public class InitAttributeImpl extends MinimalEObjectImpl.Container implements I
     {
       case CreatePackage.INIT_ATTRIBUTE__INIT_VALUE:
         return initValue != INIT_VALUE_EDEFAULT;
-      case CreatePackage.INIT_ATTRIBUTE__DICE_REF:
-        return diceRef != null;
+      case CreatePackage.INIT_ATTRIBUTE__DICE_EVENT:
+        return diceEvent != null;
     }
     return super.eIsSet(featureID);
   }

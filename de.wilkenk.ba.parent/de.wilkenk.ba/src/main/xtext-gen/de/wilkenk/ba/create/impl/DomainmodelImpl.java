@@ -23,8 +23,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.eclipse.xtext.xtype.XImportSection;
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Domainmodel</b></em>'.
@@ -33,7 +31,6 @@ import org.eclipse.xtext.xtype.XImportSection;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.wilkenk.ba.create.impl.DomainmodelImpl#getImportSection <em>Import Section</em>}</li>
  *   <li>{@link de.wilkenk.ba.create.impl.DomainmodelImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.wilkenk.ba.create.impl.DomainmodelImpl#getElements <em>Elements</em>}</li>
  * </ul>
@@ -42,16 +39,6 @@ import org.eclipse.xtext.xtype.XImportSection;
  */
 public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Domainmodel
 {
-  /**
-   * The cached value of the '{@link #getImportSection() <em>Import Section</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getImportSection()
-   * @generated
-   * @ordered
-   */
-  protected XImportSection importSection;
-
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -108,54 +95,6 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
    * <!-- end-user-doc -->
    * @generated
    */
-  public XImportSection getImportSection()
-  {
-    return importSection;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetImportSection(XImportSection newImportSection, NotificationChain msgs)
-  {
-    XImportSection oldImportSection = importSection;
-    importSection = newImportSection;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CreatePackage.DOMAINMODEL__IMPORT_SECTION, oldImportSection, newImportSection);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setImportSection(XImportSection newImportSection)
-  {
-    if (newImportSection != importSection)
-    {
-      NotificationChain msgs = null;
-      if (importSection != null)
-        msgs = ((InternalEObject)importSection).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CreatePackage.DOMAINMODEL__IMPORT_SECTION, null, msgs);
-      if (newImportSection != null)
-        msgs = ((InternalEObject)newImportSection).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CreatePackage.DOMAINMODEL__IMPORT_SECTION, null, msgs);
-      msgs = basicSetImportSection(newImportSection, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CreatePackage.DOMAINMODEL__IMPORT_SECTION, newImportSection, newImportSection));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public String getName()
   {
     return name;
@@ -198,8 +137,6 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
   {
     switch (featureID)
     {
-      case CreatePackage.DOMAINMODEL__IMPORT_SECTION:
-        return basicSetImportSection(null, msgs);
       case CreatePackage.DOMAINMODEL__ELEMENTS:
         return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
     }
@@ -216,8 +153,6 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
   {
     switch (featureID)
     {
-      case CreatePackage.DOMAINMODEL__IMPORT_SECTION:
-        return getImportSection();
       case CreatePackage.DOMAINMODEL__NAME:
         return getName();
       case CreatePackage.DOMAINMODEL__ELEMENTS:
@@ -237,9 +172,6 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
   {
     switch (featureID)
     {
-      case CreatePackage.DOMAINMODEL__IMPORT_SECTION:
-        setImportSection((XImportSection)newValue);
-        return;
       case CreatePackage.DOMAINMODEL__NAME:
         setName((String)newValue);
         return;
@@ -261,9 +193,6 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
   {
     switch (featureID)
     {
-      case CreatePackage.DOMAINMODEL__IMPORT_SECTION:
-        setImportSection((XImportSection)null);
-        return;
       case CreatePackage.DOMAINMODEL__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -284,8 +213,6 @@ public class DomainmodelImpl extends MinimalEObjectImpl.Container implements Dom
   {
     switch (featureID)
     {
-      case CreatePackage.DOMAINMODEL__IMPORT_SECTION:
-        return importSection != null;
       case CreatePackage.DOMAINMODEL__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case CreatePackage.DOMAINMODEL__ELEMENTS:

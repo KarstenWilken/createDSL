@@ -9,6 +9,7 @@ import de.wilkenk.ba.create.DicePart;
 import de.wilkenk.ba.create.DiceRef;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -42,24 +43,14 @@ public class DiceRefImpl extends MathExpressionImpl implements DiceRef
   protected Dice dice;
 
   /**
-   * The default value of the '{@link #getPart() <em>Part</em>}' attribute.
+   * The cached value of the '{@link #getPart() <em>Part</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getPart()
    * @generated
    * @ordered
    */
-  protected static final DicePart PART_EDEFAULT = DicePart.NAME;
-
-  /**
-   * The cached value of the '{@link #getPart() <em>Part</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getPart()
-   * @generated
-   * @ordered
-   */
-  protected DicePart part = PART_EDEFAULT;
+  protected DicePart part;
 
   /**
    * <!-- begin-user-doc -->
@@ -140,12 +131,53 @@ public class DiceRefImpl extends MathExpressionImpl implements DiceRef
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setPart(DicePart newPart)
+  public NotificationChain basicSetPart(DicePart newPart, NotificationChain msgs)
   {
     DicePart oldPart = part;
-    part = newPart == null ? PART_EDEFAULT : newPart;
+    part = newPart;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CreatePackage.DICE_REF__PART, oldPart, part));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CreatePackage.DICE_REF__PART, oldPart, newPart);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setPart(DicePart newPart)
+  {
+    if (newPart != part)
+    {
+      NotificationChain msgs = null;
+      if (part != null)
+        msgs = ((InternalEObject)part).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CreatePackage.DICE_REF__PART, null, msgs);
+      if (newPart != null)
+        msgs = ((InternalEObject)newPart).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CreatePackage.DICE_REF__PART, null, msgs);
+      msgs = basicSetPart(newPart, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CreatePackage.DICE_REF__PART, newPart, newPart));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case CreatePackage.DICE_REF__PART:
+        return basicSetPart(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -201,7 +233,7 @@ public class DiceRefImpl extends MathExpressionImpl implements DiceRef
         setDice((Dice)null);
         return;
       case CreatePackage.DICE_REF__PART:
-        setPart(PART_EDEFAULT);
+        setPart((DicePart)null);
         return;
     }
     super.eUnset(featureID);
@@ -220,26 +252,9 @@ public class DiceRefImpl extends MathExpressionImpl implements DiceRef
       case CreatePackage.DICE_REF__DICE:
         return dice != null;
       case CreatePackage.DICE_REF__PART:
-        return part != PART_EDEFAULT;
+        return part != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (part: ");
-    result.append(part);
-    result.append(')');
-    return result.toString();
   }
 
 } //DiceRefImpl

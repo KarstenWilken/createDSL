@@ -4,7 +4,6 @@
 package de.wilkenk.ba.create.impl;
 
 import de.wilkenk.ba.create.CreatePackage;
-import de.wilkenk.ba.create.Operation;
 import de.wilkenk.ba.create.Property;
 
 import java.util.Collection;
@@ -28,7 +27,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link de.wilkenk.ba.create.impl.CharacterImpl#getProperties <em>Properties</em>}</li>
- *   <li>{@link de.wilkenk.ba.create.impl.CharacterImpl#getOperations <em>Operations</em>}</li>
  * </ul>
  *
  * @generated
@@ -44,16 +42,6 @@ public class CharacterImpl extends EntityImpl implements de.wilkenk.ba.create.Ch
    * @ordered
    */
   protected EList<Property> properties;
-
-  /**
-   * The cached value of the '{@link #getOperations() <em>Operations</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getOperations()
-   * @generated
-   * @ordered
-   */
-  protected EList<Operation> operations;
 
   /**
    * <!-- begin-user-doc -->
@@ -95,20 +83,6 @@ public class CharacterImpl extends EntityImpl implements de.wilkenk.ba.create.Ch
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Operation> getOperations()
-  {
-    if (operations == null)
-    {
-      operations = new EObjectContainmentEList<Operation>(Operation.class, this, CreatePackage.CHARACTER__OPERATIONS);
-    }
-    return operations;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -116,8 +90,6 @@ public class CharacterImpl extends EntityImpl implements de.wilkenk.ba.create.Ch
     {
       case CreatePackage.CHARACTER__PROPERTIES:
         return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
-      case CreatePackage.CHARACTER__OPERATIONS:
-        return ((InternalEList<?>)getOperations()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -134,8 +106,6 @@ public class CharacterImpl extends EntityImpl implements de.wilkenk.ba.create.Ch
     {
       case CreatePackage.CHARACTER__PROPERTIES:
         return getProperties();
-      case CreatePackage.CHARACTER__OPERATIONS:
-        return getOperations();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -155,10 +125,6 @@ public class CharacterImpl extends EntityImpl implements de.wilkenk.ba.create.Ch
         getProperties().clear();
         getProperties().addAll((Collection<? extends Property>)newValue);
         return;
-      case CreatePackage.CHARACTER__OPERATIONS:
-        getOperations().clear();
-        getOperations().addAll((Collection<? extends Operation>)newValue);
-        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -176,9 +142,6 @@ public class CharacterImpl extends EntityImpl implements de.wilkenk.ba.create.Ch
       case CreatePackage.CHARACTER__PROPERTIES:
         getProperties().clear();
         return;
-      case CreatePackage.CHARACTER__OPERATIONS:
-        getOperations().clear();
-        return;
     }
     super.eUnset(featureID);
   }
@@ -195,8 +158,6 @@ public class CharacterImpl extends EntityImpl implements de.wilkenk.ba.create.Ch
     {
       case CreatePackage.CHARACTER__PROPERTIES:
         return properties != null && !properties.isEmpty();
-      case CreatePackage.CHARACTER__OPERATIONS:
-        return operations != null && !operations.isEmpty();
     }
     return super.eIsSet(featureID);
   }

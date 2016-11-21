@@ -39,9 +39,9 @@ import de.wilkenk.ba.create.Domainmodel;
 import de.wilkenk.ba.create.Entity;
 import de.wilkenk.ba.create.InitAttribute;
 import de.wilkenk.ba.create.InitialAttributeDecision;
+import de.wilkenk.ba.create.IntRef;
 import de.wilkenk.ba.create.MathExpression;
 import de.wilkenk.ba.create.Multiplication;
-import de.wilkenk.ba.create.Operation;
 import de.wilkenk.ba.create.Property;
 import de.wilkenk.ba.create.Raise;
 import de.wilkenk.ba.create.Row;
@@ -113,7 +113,6 @@ public class CreateFactoryImpl extends EFactoryImpl implements CreateFactory
       case CreatePackage.ENTITY: return createEntity();
       case CreatePackage.CHARACTER: return createCharacter();
       case CreatePackage.PROPERTY: return createProperty();
-      case CreatePackage.OPERATION: return createOperation();
       case CreatePackage.ATTRIBUTE: return createAttribute();
       case CreatePackage.ATTRIBUTE_REF: return createAttributeRef();
       case CreatePackage.INITIAL_ATTRIBUTE_DECISION: return createInitialAttributeDecision();
@@ -122,11 +121,13 @@ public class CreateFactoryImpl extends EFactoryImpl implements CreateFactory
       case CreatePackage.COMBINED_ATTRIBUTE: return createCombinedAttribute();
       case CreatePackage.COMBINED_ATTRIBUTE_REF: return createCombinedAttributeRef();
       case CreatePackage.MATH_EXPRESSION: return createMathExpression();
+      case CreatePackage.INT_REF: return createIntRef();
       case CreatePackage.COMBINATION: return createCombination();
       case CreatePackage.COMBINATION_REF: return createCombinationRef();
       case CreatePackage.COMBINATION_CONDITION: return createCombinationCondition();
       case CreatePackage.DICE: return createDice();
       case CreatePackage.DICE_REF: return createDiceRef();
+      case CreatePackage.DICE_PART: return createDicePart();
       case CreatePackage.RAISE: return createRaise();
       case CreatePackage.ATTRIBUTE_RAISE: return createAttributeRaise();
       case CreatePackage.ATTRIBUTE_RAISE_TYPE: return createAttributeRaiseType();
@@ -166,8 +167,6 @@ public class CreateFactoryImpl extends EFactoryImpl implements CreateFactory
         return createCombinedAttributePartFromString(eDataType, initialValue);
       case CreatePackage.COMBINATION_PART:
         return createCombinationPartFromString(eDataType, initialValue);
-      case CreatePackage.DICE_PART:
-        return createDicePartFromString(eDataType, initialValue);
       case CreatePackage.DECISION_TABLE_PART:
         return createDecisionTablePartFromString(eDataType, initialValue);
       case CreatePackage.ROW_PART:
@@ -195,8 +194,6 @@ public class CreateFactoryImpl extends EFactoryImpl implements CreateFactory
         return convertCombinedAttributePartToString(eDataType, instanceValue);
       case CreatePackage.COMBINATION_PART:
         return convertCombinationPartToString(eDataType, instanceValue);
-      case CreatePackage.DICE_PART:
-        return convertDicePartToString(eDataType, instanceValue);
       case CreatePackage.DECISION_TABLE_PART:
         return convertDecisionTablePartToString(eDataType, instanceValue);
       case CreatePackage.ROW_PART:
@@ -250,17 +247,6 @@ public class CreateFactoryImpl extends EFactoryImpl implements CreateFactory
   {
     PropertyImpl property = new PropertyImpl();
     return property;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Operation createOperation()
-  {
-    OperationImpl operation = new OperationImpl();
-    return operation;
   }
 
   /**
@@ -356,6 +342,17 @@ public class CreateFactoryImpl extends EFactoryImpl implements CreateFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public IntRef createIntRef()
+  {
+    IntRefImpl intRef = new IntRefImpl();
+    return intRef;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Combination createCombination()
   {
     CombinationImpl combination = new CombinationImpl();
@@ -404,6 +401,17 @@ public class CreateFactoryImpl extends EFactoryImpl implements CreateFactory
   {
     DiceRefImpl diceRef = new DiceRefImpl();
     return diceRef;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DicePart createDicePart()
+  {
+    DicePartImpl dicePart = new DicePartImpl();
+    return dicePart;
   }
 
   /**
@@ -666,28 +674,6 @@ public class CreateFactoryImpl extends EFactoryImpl implements CreateFactory
    * @generated
    */
   public String convertCombinationPartToString(EDataType eDataType, Object instanceValue)
-  {
-    return instanceValue == null ? null : instanceValue.toString();
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public DicePart createDicePartFromString(EDataType eDataType, String initialValue)
-  {
-    DicePart result = DicePart.get(initialValue);
-    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-    return result;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String convertDicePartToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }

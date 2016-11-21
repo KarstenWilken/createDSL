@@ -50,29 +50,26 @@ public interface DiceRef extends MathExpression
   void setDice(Dice value);
 
   /**
-   * Returns the value of the '<em><b>Part</b></em>' attribute.
-   * The literals are from the enumeration {@link de.wilkenk.ba.create.DicePart}.
+   * Returns the value of the '<em><b>Part</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Part</em>' attribute isn't clear,
+   * If the meaning of the '<em>Part</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Part</em>' attribute.
-   * @see de.wilkenk.ba.create.DicePart
+   * @return the value of the '<em>Part</em>' containment reference.
    * @see #setPart(DicePart)
    * @see de.wilkenk.ba.create.CreatePackage#getDiceRef_Part()
-   * @model
+   * @model containment="true"
    * @generated
    */
   DicePart getPart();
 
   /**
-   * Sets the value of the '{@link de.wilkenk.ba.create.DiceRef#getPart <em>Part</em>}' attribute.
+   * Sets the value of the '{@link de.wilkenk.ba.create.DiceRef#getPart <em>Part</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Part</em>' attribute.
-   * @see de.wilkenk.ba.create.DicePart
+   * @param value the new value of the '<em>Part</em>' containment reference.
    * @see #getPart()
    * @generated
    */

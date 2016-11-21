@@ -15,7 +15,6 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link de.wilkenk.ba.create.Character#getProperties <em>Properties</em>}</li>
- *   <li>{@link de.wilkenk.ba.create.Character#getOperations <em>Operations</em>}</li>
  * </ul>
  *
  * @see de.wilkenk.ba.create.CreatePackage#getCharacter()
@@ -39,21 +38,5 @@ public interface Character extends Entity
    * @generated
    */
   EList<Property> getProperties();
-
-  /**
-   * Returns the value of the '<em><b>Operations</b></em>' containment reference list.
-   * The list contents are of type {@link de.wilkenk.ba.create.Operation}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Operations</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Operations</em>' containment reference list.
-   * @see de.wilkenk.ba.create.CreatePackage#getCharacter_Operations()
-   * @model containment="true"
-   * @generated
-   */
-  EList<Operation> getOperations();
 
 } // Character

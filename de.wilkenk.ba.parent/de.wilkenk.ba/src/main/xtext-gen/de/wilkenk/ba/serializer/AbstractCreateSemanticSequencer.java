@@ -25,12 +25,13 @@ import de.wilkenk.ba.create.DecisionTableRef;
 import de.wilkenk.ba.create.DeleteCombination;
 import de.wilkenk.ba.create.Dice;
 import de.wilkenk.ba.create.DiceBasedRaise;
+import de.wilkenk.ba.create.DicePart;
 import de.wilkenk.ba.create.DiceRef;
 import de.wilkenk.ba.create.Domainmodel;
 import de.wilkenk.ba.create.InitAttribute;
 import de.wilkenk.ba.create.InitialAttributeDecision;
+import de.wilkenk.ba.create.IntRef;
 import de.wilkenk.ba.create.Multiplication;
-import de.wilkenk.ba.create.Operation;
 import de.wilkenk.ba.create.Property;
 import de.wilkenk.ba.create.Row;
 import de.wilkenk.ba.create.RowRef;
@@ -168,6 +169,9 @@ public abstract class AbstractCreateSemanticSequencer extends XbaseSemanticSeque
 			case CreatePackage.DICE_BASED_RAISE:
 				sequence_DiceBasedRaise(context, (DiceBasedRaise) semanticObject); 
 				return; 
+			case CreatePackage.DICE_PART:
+				sequence_DicePart(context, (DicePart) semanticObject); 
+				return; 
 			case CreatePackage.DICE_REF:
 				sequence_DiceRef(context, (DiceRef) semanticObject); 
 				return; 
@@ -180,11 +184,11 @@ public abstract class AbstractCreateSemanticSequencer extends XbaseSemanticSeque
 			case CreatePackage.INITIAL_ATTRIBUTE_DECISION:
 				sequence_InitialAttributeDecision(context, (InitialAttributeDecision) semanticObject); 
 				return; 
+			case CreatePackage.INT_REF:
+				sequence_IntRef(context, (IntRef) semanticObject); 
+				return; 
 			case CreatePackage.MULTIPLICATION:
 				sequence_Multiplication(context, (Multiplication) semanticObject); 
-				return; 
-			case CreatePackage.OPERATION:
-				sequence_Operation(context, (Operation) semanticObject); 
 				return; 
 			case CreatePackage.PROPERTY:
 				sequence_Property(context, (Property) semanticObject); 
@@ -525,11 +529,12 @@ public abstract class AbstractCreateSemanticSequencer extends XbaseSemanticSeque
 	 * Constraint:
 	 *     (
 	 *         name=QualifiedName 
-	 *         (minValue=INT maxValue=INT)? 
-	 *         value=INT? 
+	 *         (intValue=INT | stringValue=STRING)? 
 	 *         initialValue=InitialAttributeDecision? 
+	 *         (valueType='Integer' | valueType='String')? 
+	 *         (minValue=INT maxValue=INT)? 
 	 *         category=[Category|ID]? 
-	 *         description=ID?
+	 *         description=STRING?
 	 *     )
 	 */
 	protected void sequence_Attribute(ISerializationContext context, Attribute semanticObject) {
@@ -543,7 +548,7 @@ public abstract class AbstractCreateSemanticSequencer extends XbaseSemanticSeque
 	 *     Category returns Category
 	 *
 	 * Constraint:
-	 *     name=ID
+	 *     name=STRING
 	 */
 	protected void sequence_Category(ISerializationContext context, Category semanticObject) {
 		if (errorAcceptor != null) {
@@ -551,7 +556,7 @@ public abstract class AbstractCreateSemanticSequencer extends XbaseSemanticSeque
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CreatePackage.Literals.ENTITY__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getCategoryAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getCategoryAccess().getNameSTRINGTerminalRuleCall_1_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	
@@ -562,7 +567,7 @@ public abstract class AbstractCreateSemanticSequencer extends XbaseSemanticSeque
 	 *     Character returns Character
 	 *
 	 * Constraint:
-	 *     (name=QualifiedName properties+=Property* operations+=Operation*)
+	 *     (name=QualifiedName properties+=Property*)
 	 */
 	protected void sequence_Character(ISerializationContext context, de.wilkenk.ba.create.Character semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -673,7 +678,7 @@ public abstract class AbstractCreateSemanticSequencer extends XbaseSemanticSeque
 	 *         maxValue=INT 
 	 *         combValue=MathExpression 
 	 *         category=[Category|ID]? 
-	 *         description=ID?
+	 *         description=STRING?
 	 *     )
 	 */
 	protected void sequence_CombinedAttribute(ISerializationContext context, CombinedAttribute semanticObject) {
@@ -822,6 +827,24 @@ public abstract class AbstractCreateSemanticSequencer extends XbaseSemanticSeque
 	
 	/**
 	 * Contexts:
+	 *     DicePart returns DicePart
+	 *
+	 * Constraint:
+	 *     throw='throw'
+	 */
+	protected void sequence_DicePart(ISerializationContext context, DicePart semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, CreatePackage.Literals.DICE_PART__THROW) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CreatePackage.Literals.DICE_PART__THROW));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getDicePartAccess().getThrowThrowKeyword_0(), semanticObject.getThrow());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     MathExpression returns DiceRef
 	 *     Addition returns DiceRef
 	 *     Addition.Addition_1_0 returns DiceRef
@@ -842,7 +865,7 @@ public abstract class AbstractCreateSemanticSequencer extends XbaseSemanticSeque
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getDiceRefAccess().getDiceDiceIDTerminalRuleCall_0_0_1(), semanticObject.getDice());
-		feeder.accept(grammarAccess.getDiceRefAccess().getPartDicePartEnumRuleCall_2_0(), semanticObject.getPart());
+		feeder.accept(grammarAccess.getDiceRefAccess().getPartDicePartParserRuleCall_2_0(), semanticObject.getPart());
 		feeder.finish();
 	}
 	
@@ -874,7 +897,7 @@ public abstract class AbstractCreateSemanticSequencer extends XbaseSemanticSeque
 	 *     Domainmodel returns Domainmodel
 	 *
 	 * Constraint:
-	 *     (importSection=XImportSection? name=QualifiedName elements+=Entity*)
+	 *     (name=QualifiedName elements+=Entity*)
 	 */
 	protected void sequence_Domainmodel(ISerializationContext context, Domainmodel semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -886,7 +909,7 @@ public abstract class AbstractCreateSemanticSequencer extends XbaseSemanticSeque
 	 *     InitAttribute returns InitAttribute
 	 *
 	 * Constraint:
-	 *     (initValue=INT | diceRef=DiceRef)
+	 *     (initValue=INT | diceEvent=MathExpression)
 	 */
 	protected void sequence_InitAttribute(ISerializationContext context, InitAttribute semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -913,6 +936,30 @@ public abstract class AbstractCreateSemanticSequencer extends XbaseSemanticSeque
 	
 	/**
 	 * Contexts:
+	 *     MathExpression returns IntRef
+	 *     Addition returns IntRef
+	 *     Addition.Addition_1_0 returns IntRef
+	 *     Multiplication returns IntRef
+	 *     Multiplication.Multiplication_1_0 returns IntRef
+	 *     Primary returns IntRef
+	 *     IntRef returns IntRef
+	 *
+	 * Constraint:
+	 *     intVal=INT
+	 */
+	protected void sequence_IntRef(ISerializationContext context, IntRef semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, CreatePackage.Literals.INT_REF__INT_VAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CreatePackage.Literals.INT_REF__INT_VAL));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getIntRefAccess().getIntValINTTerminalRuleCall_0(), semanticObject.getIntVal());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     MathExpression returns Multiplication
 	 *     Addition returns Multiplication
 	 *     Addition.Addition_1_0 returns Multiplication
@@ -924,18 +971,6 @@ public abstract class AbstractCreateSemanticSequencer extends XbaseSemanticSeque
 	 *     (left=Multiplication_Multiplication_1_0 (op='*' | op='/') right=Primary)
 	 */
 	protected void sequence_Multiplication(ISerializationContext context, Multiplication semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Operation returns Operation
-	 *
-	 * Constraint:
-	 *     (name=ValidID (params+=FullJvmFormalParameter params+=FullJvmFormalParameter*)? type=JvmTypeReference body=XBlockExpression)
-	 */
-	protected void sequence_Operation(ISerializationContext context, Operation semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

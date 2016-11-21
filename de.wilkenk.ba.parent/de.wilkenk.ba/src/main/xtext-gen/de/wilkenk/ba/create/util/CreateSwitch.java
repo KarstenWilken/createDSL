@@ -27,14 +27,15 @@ import de.wilkenk.ba.create.DecisionTableRef;
 import de.wilkenk.ba.create.DeleteCombination;
 import de.wilkenk.ba.create.Dice;
 import de.wilkenk.ba.create.DiceBasedRaise;
+import de.wilkenk.ba.create.DicePart;
 import de.wilkenk.ba.create.DiceRef;
 import de.wilkenk.ba.create.Domainmodel;
 import de.wilkenk.ba.create.Entity;
 import de.wilkenk.ba.create.InitAttribute;
 import de.wilkenk.ba.create.InitialAttributeDecision;
+import de.wilkenk.ba.create.IntRef;
 import de.wilkenk.ba.create.MathExpression;
 import de.wilkenk.ba.create.Multiplication;
-import de.wilkenk.ba.create.Operation;
 import de.wilkenk.ba.create.Property;
 import de.wilkenk.ba.create.Raise;
 import de.wilkenk.ba.create.Row;
@@ -137,13 +138,6 @@ public class CreateSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case CreatePackage.OPERATION:
-      {
-        Operation operation = (Operation)theEObject;
-        T result = caseOperation(operation);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case CreatePackage.ATTRIBUTE:
       {
         Attribute attribute = (Attribute)theEObject;
@@ -206,6 +200,14 @@ public class CreateSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case CreatePackage.INT_REF:
+      {
+        IntRef intRef = (IntRef)theEObject;
+        T result = caseIntRef(intRef);
+        if (result == null) result = caseMathExpression(intRef);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case CreatePackage.COMBINATION:
       {
         Combination combination = (Combination)theEObject;
@@ -242,6 +244,13 @@ public class CreateSwitch<T> extends Switch<T>
         DiceRef diceRef = (DiceRef)theEObject;
         T result = caseDiceRef(diceRef);
         if (result == null) result = caseMathExpression(diceRef);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CreatePackage.DICE_PART:
+      {
+        DicePart dicePart = (DicePart)theEObject;
+        T result = caseDicePart(dicePart);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -452,22 +461,6 @@ public class CreateSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Operation</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Operation</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseOperation(Operation object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Attribute</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -596,6 +589,22 @@ public class CreateSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Int Ref</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Int Ref</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseIntRef(IntRef object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Combination</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -671,6 +680,22 @@ public class CreateSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseDiceRef(DiceRef object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Dice Part</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Dice Part</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDicePart(DicePart object)
   {
     return null;
   }

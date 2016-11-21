@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link de.wilkenk.ba.create.InitAttribute#getInitValue <em>Init Value</em>}</li>
- *   <li>{@link de.wilkenk.ba.create.InitAttribute#getDiceRef <em>Dice Ref</em>}</li>
+ *   <li>{@link de.wilkenk.ba.create.InitAttribute#getDiceEvent <em>Dice Event</em>}</li>
  * </ul>
  *
  * @see de.wilkenk.ba.create.CreatePackage#getInitAttribute()
@@ -51,29 +51,29 @@ public interface InitAttribute extends EObject
   void setInitValue(int value);
 
   /**
-   * Returns the value of the '<em><b>Dice Ref</b></em>' containment reference.
+   * Returns the value of the '<em><b>Dice Event</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Dice Ref</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Dice Event</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Dice Ref</em>' containment reference.
-   * @see #setDiceRef(DiceRef)
-   * @see de.wilkenk.ba.create.CreatePackage#getInitAttribute_DiceRef()
+   * @return the value of the '<em>Dice Event</em>' containment reference.
+   * @see #setDiceEvent(MathExpression)
+   * @see de.wilkenk.ba.create.CreatePackage#getInitAttribute_DiceEvent()
    * @model containment="true"
    * @generated
    */
-  DiceRef getDiceRef();
+  MathExpression getDiceEvent();
 
   /**
-   * Sets the value of the '{@link de.wilkenk.ba.create.InitAttribute#getDiceRef <em>Dice Ref</em>}' containment reference.
+   * Sets the value of the '{@link de.wilkenk.ba.create.InitAttribute#getDiceEvent <em>Dice Event</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Dice Ref</em>' containment reference.
-   * @see #getDiceRef()
+   * @param value the new value of the '<em>Dice Event</em>' containment reference.
+   * @see #getDiceEvent()
    * @generated
    */
-  void setDiceRef(DiceRef value);
+  void setDiceEvent(MathExpression value);
 
 } // InitAttribute

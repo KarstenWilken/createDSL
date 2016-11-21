@@ -23,15 +23,25 @@
 		});
 		require(["orion/code_edit/built-codeEdit-amd"], function() {
 			require(["xtext/xtext-orion"], function(xtext) {
-				xtext.createEditor({
-					baseUrl: baseUrl,
-					syntaxDefinition: "xtext-resources/generated/create-syntax"
-				});
-				jQuery('#generate-button').bind("click", function(e){
-					
-					jQuery('#generator-result').html('<iframe src="http://' + location.host + '/xtext-service/generate-all?resource=example1.create"></iframe>');
-					e.preventDefault();
-				});
+				var editor = xtext.createEditor({
+						baseUrl: baseUrl,
+						syntaxDefinition: "xtext-resources/generated/create-syntax"
+					}).done(function(editViewer) {
+						jQuery('#generate-button').bind("click", function(e) {
+							var resource = editorViewer.xtextServices.options.resourceId;
+							var contentType = editorViewer.xtextServices.contentType;
+							var fullText = editorViewer.xtextServices.editorContext.getText();
+							console.log(fullText);
+							var data = {
+										resource: resource,
+										fullText: fullText,
+										contextType: contentType
+										};
+							});
+						jQuery.post('http://localhost:8080/xtext-service/generate-all', data, function(result) {
+							jQuery("#generator-result").text(JSON.stringify(result));
+						}); 
+					});
 			});
 		});
 	</script>
@@ -46,7 +56,6 @@
 		<div 	id="xtext-editor" 
 				class="editor" 
 				data-editor-xtext-lang="create"
- 				data-editor-resource-id="example1.create"
 				>
 		</div>
  		<div class="button-wrapper">

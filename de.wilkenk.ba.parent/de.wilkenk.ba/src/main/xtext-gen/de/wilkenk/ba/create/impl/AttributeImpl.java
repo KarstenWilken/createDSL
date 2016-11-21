@@ -24,10 +24,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link de.wilkenk.ba.create.impl.AttributeImpl#getIntValue <em>Int Value</em>}</li>
+ *   <li>{@link de.wilkenk.ba.create.impl.AttributeImpl#getStringValue <em>String Value</em>}</li>
+ *   <li>{@link de.wilkenk.ba.create.impl.AttributeImpl#getInitialValue <em>Initial Value</em>}</li>
+ *   <li>{@link de.wilkenk.ba.create.impl.AttributeImpl#getValueType <em>Value Type</em>}</li>
  *   <li>{@link de.wilkenk.ba.create.impl.AttributeImpl#getMinValue <em>Min Value</em>}</li>
  *   <li>{@link de.wilkenk.ba.create.impl.AttributeImpl#getMaxValue <em>Max Value</em>}</li>
- *   <li>{@link de.wilkenk.ba.create.impl.AttributeImpl#getValue <em>Value</em>}</li>
- *   <li>{@link de.wilkenk.ba.create.impl.AttributeImpl#getInitialValue <em>Initial Value</em>}</li>
  *   <li>{@link de.wilkenk.ba.create.impl.AttributeImpl#getCategory <em>Category</em>}</li>
  *   <li>{@link de.wilkenk.ba.create.impl.AttributeImpl#getDescription <em>Description</em>}</li>
  * </ul>
@@ -36,6 +38,76 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class AttributeImpl extends EntityImpl implements Attribute
 {
+  /**
+   * The default value of the '{@link #getIntValue() <em>Int Value</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getIntValue()
+   * @generated
+   * @ordered
+   */
+  protected static final int INT_VALUE_EDEFAULT = 0;
+
+  /**
+   * The cached value of the '{@link #getIntValue() <em>Int Value</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getIntValue()
+   * @generated
+   * @ordered
+   */
+  protected int intValue = INT_VALUE_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getStringValue() <em>String Value</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getStringValue()
+   * @generated
+   * @ordered
+   */
+  protected static final String STRING_VALUE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getStringValue() <em>String Value</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getStringValue()
+   * @generated
+   * @ordered
+   */
+  protected String stringValue = STRING_VALUE_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getInitialValue() <em>Initial Value</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getInitialValue()
+   * @generated
+   * @ordered
+   */
+  protected InitialAttributeDecision initialValue;
+
+  /**
+   * The default value of the '{@link #getValueType() <em>Value Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getValueType()
+   * @generated
+   * @ordered
+   */
+  protected static final String VALUE_TYPE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getValueType() <em>Value Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getValueType()
+   * @generated
+   * @ordered
+   */
+  protected String valueType = VALUE_TYPE_EDEFAULT;
+
   /**
    * The default value of the '{@link #getMinValue() <em>Min Value</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -75,36 +147,6 @@ public class AttributeImpl extends EntityImpl implements Attribute
    * @ordered
    */
   protected int maxValue = MAX_VALUE_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getValue()
-   * @generated
-   * @ordered
-   */
-  protected static final int VALUE_EDEFAULT = 0;
-
-  /**
-   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getValue()
-   * @generated
-   * @ordered
-   */
-  protected int value = VALUE_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getInitialValue() <em>Initial Value</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getInitialValue()
-   * @generated
-   * @ordered
-   */
-  protected InitialAttributeDecision initialValue;
 
   /**
    * The cached value of the '{@link #getCategory() <em>Category</em>}' reference.
@@ -162,9 +204,9 @@ public class AttributeImpl extends EntityImpl implements Attribute
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getMinValue()
+  public int getIntValue()
   {
-    return minValue;
+    return intValue;
   }
 
   /**
@@ -172,12 +214,12 @@ public class AttributeImpl extends EntityImpl implements Attribute
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setMinValue(int newMinValue)
+  public void setIntValue(int newIntValue)
   {
-    int oldMinValue = minValue;
-    minValue = newMinValue;
+    int oldIntValue = intValue;
+    intValue = newIntValue;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CreatePackage.ATTRIBUTE__MIN_VALUE, oldMinValue, minValue));
+      eNotify(new ENotificationImpl(this, Notification.SET, CreatePackage.ATTRIBUTE__INT_VALUE, oldIntValue, intValue));
   }
 
   /**
@@ -185,9 +227,9 @@ public class AttributeImpl extends EntityImpl implements Attribute
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getMaxValue()
+  public String getStringValue()
   {
-    return maxValue;
+    return stringValue;
   }
 
   /**
@@ -195,35 +237,12 @@ public class AttributeImpl extends EntityImpl implements Attribute
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setMaxValue(int newMaxValue)
+  public void setStringValue(String newStringValue)
   {
-    int oldMaxValue = maxValue;
-    maxValue = newMaxValue;
+    String oldStringValue = stringValue;
+    stringValue = newStringValue;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CreatePackage.ATTRIBUTE__MAX_VALUE, oldMaxValue, maxValue));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public int getValue()
-  {
-    return value;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setValue(int newValue)
-  {
-    int oldValue = value;
-    value = newValue;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CreatePackage.ATTRIBUTE__VALUE, oldValue, value));
+      eNotify(new ENotificationImpl(this, Notification.SET, CreatePackage.ATTRIBUTE__STRING_VALUE, oldStringValue, stringValue));
   }
 
   /**
@@ -272,6 +291,75 @@ public class AttributeImpl extends EntityImpl implements Attribute
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, CreatePackage.ATTRIBUTE__INITIAL_VALUE, newInitialValue, newInitialValue));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getValueType()
+  {
+    return valueType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setValueType(String newValueType)
+  {
+    String oldValueType = valueType;
+    valueType = newValueType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CreatePackage.ATTRIBUTE__VALUE_TYPE, oldValueType, valueType));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public int getMinValue()
+  {
+    return minValue;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setMinValue(int newMinValue)
+  {
+    int oldMinValue = minValue;
+    minValue = newMinValue;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CreatePackage.ATTRIBUTE__MIN_VALUE, oldMinValue, minValue));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public int getMaxValue()
+  {
+    return maxValue;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setMaxValue(int newMaxValue)
+  {
+    int oldMaxValue = maxValue;
+    maxValue = newMaxValue;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CreatePackage.ATTRIBUTE__MAX_VALUE, oldMaxValue, maxValue));
   }
 
   /**
@@ -366,14 +454,18 @@ public class AttributeImpl extends EntityImpl implements Attribute
   {
     switch (featureID)
     {
+      case CreatePackage.ATTRIBUTE__INT_VALUE:
+        return getIntValue();
+      case CreatePackage.ATTRIBUTE__STRING_VALUE:
+        return getStringValue();
+      case CreatePackage.ATTRIBUTE__INITIAL_VALUE:
+        return getInitialValue();
+      case CreatePackage.ATTRIBUTE__VALUE_TYPE:
+        return getValueType();
       case CreatePackage.ATTRIBUTE__MIN_VALUE:
         return getMinValue();
       case CreatePackage.ATTRIBUTE__MAX_VALUE:
         return getMaxValue();
-      case CreatePackage.ATTRIBUTE__VALUE:
-        return getValue();
-      case CreatePackage.ATTRIBUTE__INITIAL_VALUE:
-        return getInitialValue();
       case CreatePackage.ATTRIBUTE__CATEGORY:
         if (resolve) return getCategory();
         return basicGetCategory();
@@ -393,17 +485,23 @@ public class AttributeImpl extends EntityImpl implements Attribute
   {
     switch (featureID)
     {
+      case CreatePackage.ATTRIBUTE__INT_VALUE:
+        setIntValue((Integer)newValue);
+        return;
+      case CreatePackage.ATTRIBUTE__STRING_VALUE:
+        setStringValue((String)newValue);
+        return;
+      case CreatePackage.ATTRIBUTE__INITIAL_VALUE:
+        setInitialValue((InitialAttributeDecision)newValue);
+        return;
+      case CreatePackage.ATTRIBUTE__VALUE_TYPE:
+        setValueType((String)newValue);
+        return;
       case CreatePackage.ATTRIBUTE__MIN_VALUE:
         setMinValue((Integer)newValue);
         return;
       case CreatePackage.ATTRIBUTE__MAX_VALUE:
         setMaxValue((Integer)newValue);
-        return;
-      case CreatePackage.ATTRIBUTE__VALUE:
-        setValue((Integer)newValue);
-        return;
-      case CreatePackage.ATTRIBUTE__INITIAL_VALUE:
-        setInitialValue((InitialAttributeDecision)newValue);
         return;
       case CreatePackage.ATTRIBUTE__CATEGORY:
         setCategory((Category)newValue);
@@ -425,17 +523,23 @@ public class AttributeImpl extends EntityImpl implements Attribute
   {
     switch (featureID)
     {
+      case CreatePackage.ATTRIBUTE__INT_VALUE:
+        setIntValue(INT_VALUE_EDEFAULT);
+        return;
+      case CreatePackage.ATTRIBUTE__STRING_VALUE:
+        setStringValue(STRING_VALUE_EDEFAULT);
+        return;
+      case CreatePackage.ATTRIBUTE__INITIAL_VALUE:
+        setInitialValue((InitialAttributeDecision)null);
+        return;
+      case CreatePackage.ATTRIBUTE__VALUE_TYPE:
+        setValueType(VALUE_TYPE_EDEFAULT);
+        return;
       case CreatePackage.ATTRIBUTE__MIN_VALUE:
         setMinValue(MIN_VALUE_EDEFAULT);
         return;
       case CreatePackage.ATTRIBUTE__MAX_VALUE:
         setMaxValue(MAX_VALUE_EDEFAULT);
-        return;
-      case CreatePackage.ATTRIBUTE__VALUE:
-        setValue(VALUE_EDEFAULT);
-        return;
-      case CreatePackage.ATTRIBUTE__INITIAL_VALUE:
-        setInitialValue((InitialAttributeDecision)null);
         return;
       case CreatePackage.ATTRIBUTE__CATEGORY:
         setCategory((Category)null);
@@ -457,14 +561,18 @@ public class AttributeImpl extends EntityImpl implements Attribute
   {
     switch (featureID)
     {
+      case CreatePackage.ATTRIBUTE__INT_VALUE:
+        return intValue != INT_VALUE_EDEFAULT;
+      case CreatePackage.ATTRIBUTE__STRING_VALUE:
+        return STRING_VALUE_EDEFAULT == null ? stringValue != null : !STRING_VALUE_EDEFAULT.equals(stringValue);
+      case CreatePackage.ATTRIBUTE__INITIAL_VALUE:
+        return initialValue != null;
+      case CreatePackage.ATTRIBUTE__VALUE_TYPE:
+        return VALUE_TYPE_EDEFAULT == null ? valueType != null : !VALUE_TYPE_EDEFAULT.equals(valueType);
       case CreatePackage.ATTRIBUTE__MIN_VALUE:
         return minValue != MIN_VALUE_EDEFAULT;
       case CreatePackage.ATTRIBUTE__MAX_VALUE:
         return maxValue != MAX_VALUE_EDEFAULT;
-      case CreatePackage.ATTRIBUTE__VALUE:
-        return value != VALUE_EDEFAULT;
-      case CreatePackage.ATTRIBUTE__INITIAL_VALUE:
-        return initialValue != null;
       case CreatePackage.ATTRIBUTE__CATEGORY:
         return category != null;
       case CreatePackage.ATTRIBUTE__DESCRIPTION:
@@ -484,12 +592,16 @@ public class AttributeImpl extends EntityImpl implements Attribute
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (minValue: ");
+    result.append(" (intValue: ");
+    result.append(intValue);
+    result.append(", stringValue: ");
+    result.append(stringValue);
+    result.append(", valueType: ");
+    result.append(valueType);
+    result.append(", minValue: ");
     result.append(minValue);
     result.append(", maxValue: ");
     result.append(maxValue);
-    result.append(", value: ");
-    result.append(value);
     result.append(", description: ");
     result.append(description);
     result.append(')');

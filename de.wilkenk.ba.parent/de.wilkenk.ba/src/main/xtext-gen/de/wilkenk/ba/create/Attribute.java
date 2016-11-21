@@ -13,10 +13,12 @@ package de.wilkenk.ba.create;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link de.wilkenk.ba.create.Attribute#getIntValue <em>Int Value</em>}</li>
+ *   <li>{@link de.wilkenk.ba.create.Attribute#getStringValue <em>String Value</em>}</li>
+ *   <li>{@link de.wilkenk.ba.create.Attribute#getInitialValue <em>Initial Value</em>}</li>
+ *   <li>{@link de.wilkenk.ba.create.Attribute#getValueType <em>Value Type</em>}</li>
  *   <li>{@link de.wilkenk.ba.create.Attribute#getMinValue <em>Min Value</em>}</li>
  *   <li>{@link de.wilkenk.ba.create.Attribute#getMaxValue <em>Max Value</em>}</li>
- *   <li>{@link de.wilkenk.ba.create.Attribute#getValue <em>Value</em>}</li>
- *   <li>{@link de.wilkenk.ba.create.Attribute#getInitialValue <em>Initial Value</em>}</li>
  *   <li>{@link de.wilkenk.ba.create.Attribute#getCategory <em>Category</em>}</li>
  *   <li>{@link de.wilkenk.ba.create.Attribute#getDescription <em>Description</em>}</li>
  * </ul>
@@ -27,6 +29,110 @@ package de.wilkenk.ba.create;
  */
 public interface Attribute extends Entity
 {
+  /**
+   * Returns the value of the '<em><b>Int Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Int Value</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Int Value</em>' attribute.
+   * @see #setIntValue(int)
+   * @see de.wilkenk.ba.create.CreatePackage#getAttribute_IntValue()
+   * @model
+   * @generated
+   */
+  int getIntValue();
+
+  /**
+   * Sets the value of the '{@link de.wilkenk.ba.create.Attribute#getIntValue <em>Int Value</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Int Value</em>' attribute.
+   * @see #getIntValue()
+   * @generated
+   */
+  void setIntValue(int value);
+
+  /**
+   * Returns the value of the '<em><b>String Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>String Value</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>String Value</em>' attribute.
+   * @see #setStringValue(String)
+   * @see de.wilkenk.ba.create.CreatePackage#getAttribute_StringValue()
+   * @model
+   * @generated
+   */
+  String getStringValue();
+
+  /**
+   * Sets the value of the '{@link de.wilkenk.ba.create.Attribute#getStringValue <em>String Value</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>String Value</em>' attribute.
+   * @see #getStringValue()
+   * @generated
+   */
+  void setStringValue(String value);
+
+  /**
+   * Returns the value of the '<em><b>Initial Value</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Initial Value</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Initial Value</em>' containment reference.
+   * @see #setInitialValue(InitialAttributeDecision)
+   * @see de.wilkenk.ba.create.CreatePackage#getAttribute_InitialValue()
+   * @model containment="true"
+   * @generated
+   */
+  InitialAttributeDecision getInitialValue();
+
+  /**
+   * Sets the value of the '{@link de.wilkenk.ba.create.Attribute#getInitialValue <em>Initial Value</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Initial Value</em>' containment reference.
+   * @see #getInitialValue()
+   * @generated
+   */
+  void setInitialValue(InitialAttributeDecision value);
+
+  /**
+   * Returns the value of the '<em><b>Value Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Value Type</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Value Type</em>' attribute.
+   * @see #setValueType(String)
+   * @see de.wilkenk.ba.create.CreatePackage#getAttribute_ValueType()
+   * @model
+   * @generated
+   */
+  String getValueType();
+
+  /**
+   * Sets the value of the '{@link de.wilkenk.ba.create.Attribute#getValueType <em>Value Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Value Type</em>' attribute.
+   * @see #getValueType()
+   * @generated
+   */
+  void setValueType(String value);
+
   /**
    * Returns the value of the '<em><b>Min Value</b></em>' attribute.
    * <!-- begin-user-doc -->
@@ -78,58 +184,6 @@ public interface Attribute extends Entity
    * @generated
    */
   void setMaxValue(int value);
-
-  /**
-   * Returns the value of the '<em><b>Value</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Value</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Value</em>' attribute.
-   * @see #setValue(int)
-   * @see de.wilkenk.ba.create.CreatePackage#getAttribute_Value()
-   * @model
-   * @generated
-   */
-  int getValue();
-
-  /**
-   * Sets the value of the '{@link de.wilkenk.ba.create.Attribute#getValue <em>Value</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Value</em>' attribute.
-   * @see #getValue()
-   * @generated
-   */
-  void setValue(int value);
-
-  /**
-   * Returns the value of the '<em><b>Initial Value</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Initial Value</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Initial Value</em>' containment reference.
-   * @see #setInitialValue(InitialAttributeDecision)
-   * @see de.wilkenk.ba.create.CreatePackage#getAttribute_InitialValue()
-   * @model containment="true"
-   * @generated
-   */
-  InitialAttributeDecision getInitialValue();
-
-  /**
-   * Sets the value of the '{@link de.wilkenk.ba.create.Attribute#getInitialValue <em>Initial Value</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Initial Value</em>' containment reference.
-   * @see #getInitialValue()
-   * @generated
-   */
-  void setInitialValue(InitialAttributeDecision value);
 
   /**
    * Returns the value of the '<em><b>Category</b></em>' reference.

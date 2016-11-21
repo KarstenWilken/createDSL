@@ -39,9 +39,9 @@ import de.wilkenk.ba.create.Domainmodel;
 import de.wilkenk.ba.create.Entity;
 import de.wilkenk.ba.create.InitAttribute;
 import de.wilkenk.ba.create.InitialAttributeDecision;
+import de.wilkenk.ba.create.IntRef;
 import de.wilkenk.ba.create.MathExpression;
 import de.wilkenk.ba.create.Multiplication;
-import de.wilkenk.ba.create.Operation;
 import de.wilkenk.ba.create.Property;
 import de.wilkenk.ba.create.Raise;
 import de.wilkenk.ba.create.Row;
@@ -56,11 +56,7 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.eclipse.xtext.common.types.TypesPackage;
-
 import org.eclipse.xtext.xbase.XbasePackage;
-
-import org.eclipse.xtext.xtype.XtypePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -97,13 +93,6 @@ public class CreatePackageImpl extends EPackageImpl implements CreatePackage
    * @generated
    */
   private EClass propertyEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass operationEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -166,6 +155,13 @@ public class CreatePackageImpl extends EPackageImpl implements CreatePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass intRefEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass combinationEClass = null;
 
   /**
@@ -195,6 +191,13 @@ public class CreatePackageImpl extends EPackageImpl implements CreatePackage
    * @generated
    */
   private EClass diceRefEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass dicePartEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -348,13 +351,6 @@ public class CreatePackageImpl extends EPackageImpl implements CreatePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EEnum dicePartEEnum = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EEnum decisionTablePartEEnum = null;
 
   /**
@@ -421,7 +417,6 @@ public class CreatePackageImpl extends EPackageImpl implements CreatePackage
 
     // Initialize simple dependencies
     XbasePackage.eINSTANCE.eClass();
-    XtypePackage.eINSTANCE.eClass();
 
     // Create package meta-data objects
     theCreatePackage.createPackageContents();
@@ -453,19 +448,9 @@ public class CreatePackageImpl extends EPackageImpl implements CreatePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDomainmodel_ImportSection()
-  {
-    return (EReference)domainmodelEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EAttribute getDomainmodel_Name()
   {
-    return (EAttribute)domainmodelEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)domainmodelEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -475,7 +460,7 @@ public class CreatePackageImpl extends EPackageImpl implements CreatePackage
    */
   public EReference getDomainmodel_Elements()
   {
-    return (EReference)domainmodelEClass.getEStructuralFeatures().get(2);
+    return (EReference)domainmodelEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -523,16 +508,6 @@ public class CreatePackageImpl extends EPackageImpl implements CreatePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getCharacter_Operations()
-  {
-    return (EReference)characterEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getProperty()
   {
     return propertyEClass;
@@ -573,56 +548,6 @@ public class CreatePackageImpl extends EPackageImpl implements CreatePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getOperation()
-  {
-    return operationEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getOperation_Name()
-  {
-    return (EAttribute)operationEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getOperation_Params()
-  {
-    return (EReference)operationEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getOperation_Type()
-  {
-    return (EReference)operationEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getOperation_Body()
-  {
-    return (EReference)operationEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getAttribute()
   {
     return attributeEClass;
@@ -633,7 +558,7 @@ public class CreatePackageImpl extends EPackageImpl implements CreatePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAttribute_MinValue()
+  public EAttribute getAttribute_IntValue()
   {
     return (EAttribute)attributeEClass.getEStructuralFeatures().get(0);
   }
@@ -643,7 +568,7 @@ public class CreatePackageImpl extends EPackageImpl implements CreatePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAttribute_MaxValue()
+  public EAttribute getAttribute_StringValue()
   {
     return (EAttribute)attributeEClass.getEStructuralFeatures().get(1);
   }
@@ -653,9 +578,9 @@ public class CreatePackageImpl extends EPackageImpl implements CreatePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAttribute_Value()
+  public EReference getAttribute_InitialValue()
   {
-    return (EAttribute)attributeEClass.getEStructuralFeatures().get(2);
+    return (EReference)attributeEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -663,9 +588,29 @@ public class CreatePackageImpl extends EPackageImpl implements CreatePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAttribute_InitialValue()
+  public EAttribute getAttribute_ValueType()
   {
-    return (EReference)attributeEClass.getEStructuralFeatures().get(3);
+    return (EAttribute)attributeEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAttribute_MinValue()
+  {
+    return (EAttribute)attributeEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAttribute_MaxValue()
+  {
+    return (EAttribute)attributeEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -675,7 +620,7 @@ public class CreatePackageImpl extends EPackageImpl implements CreatePackage
    */
   public EReference getAttribute_Category()
   {
-    return (EReference)attributeEClass.getEStructuralFeatures().get(4);
+    return (EReference)attributeEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -685,7 +630,7 @@ public class CreatePackageImpl extends EPackageImpl implements CreatePackage
    */
   public EAttribute getAttribute_Description()
   {
-    return (EAttribute)attributeEClass.getEStructuralFeatures().get(5);
+    return (EAttribute)attributeEClass.getEStructuralFeatures().get(7);
   }
 
   /**
@@ -763,7 +708,7 @@ public class CreatePackageImpl extends EPackageImpl implements CreatePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getInitAttribute_DiceRef()
+  public EReference getInitAttribute_DiceEvent()
   {
     return (EReference)initAttributeEClass.getEStructuralFeatures().get(1);
   }
@@ -876,6 +821,26 @@ public class CreatePackageImpl extends EPackageImpl implements CreatePackage
   public EClass getMathExpression()
   {
     return mathExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getIntRef()
+  {
+    return intRefEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getIntRef_IntVal()
+  {
+    return (EAttribute)intRefEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1013,9 +978,29 @@ public class CreatePackageImpl extends EPackageImpl implements CreatePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getDiceRef_Part()
+  public EReference getDiceRef_Part()
   {
-    return (EAttribute)diceRefEClass.getEStructuralFeatures().get(1);
+    return (EReference)diceRefEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getDicePart()
+  {
+    return dicePartEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDicePart_Throw()
+  {
+    return (EAttribute)dicePartEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1533,16 +1518,6 @@ public class CreatePackageImpl extends EPackageImpl implements CreatePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EEnum getDicePart()
-  {
-    return dicePartEEnum;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EEnum getDecisionTablePart()
   {
     return decisionTablePartEEnum;
@@ -1599,7 +1574,6 @@ public class CreatePackageImpl extends EPackageImpl implements CreatePackage
 
     // Create classes and their features
     domainmodelEClass = createEClass(DOMAINMODEL);
-    createEReference(domainmodelEClass, DOMAINMODEL__IMPORT_SECTION);
     createEAttribute(domainmodelEClass, DOMAINMODEL__NAME);
     createEReference(domainmodelEClass, DOMAINMODEL__ELEMENTS);
 
@@ -1608,24 +1582,19 @@ public class CreatePackageImpl extends EPackageImpl implements CreatePackage
 
     characterEClass = createEClass(CHARACTER);
     createEReference(characterEClass, CHARACTER__PROPERTIES);
-    createEReference(characterEClass, CHARACTER__OPERATIONS);
 
     propertyEClass = createEClass(PROPERTY);
     createEReference(propertyEClass, PROPERTY__ATTR_VALUE);
     createEReference(propertyEClass, PROPERTY__COMB_ATTR_VALUE);
     createEReference(propertyEClass, PROPERTY__COMB_VALUE);
 
-    operationEClass = createEClass(OPERATION);
-    createEAttribute(operationEClass, OPERATION__NAME);
-    createEReference(operationEClass, OPERATION__PARAMS);
-    createEReference(operationEClass, OPERATION__TYPE);
-    createEReference(operationEClass, OPERATION__BODY);
-
     attributeEClass = createEClass(ATTRIBUTE);
+    createEAttribute(attributeEClass, ATTRIBUTE__INT_VALUE);
+    createEAttribute(attributeEClass, ATTRIBUTE__STRING_VALUE);
+    createEReference(attributeEClass, ATTRIBUTE__INITIAL_VALUE);
+    createEAttribute(attributeEClass, ATTRIBUTE__VALUE_TYPE);
     createEAttribute(attributeEClass, ATTRIBUTE__MIN_VALUE);
     createEAttribute(attributeEClass, ATTRIBUTE__MAX_VALUE);
-    createEAttribute(attributeEClass, ATTRIBUTE__VALUE);
-    createEReference(attributeEClass, ATTRIBUTE__INITIAL_VALUE);
     createEReference(attributeEClass, ATTRIBUTE__CATEGORY);
     createEAttribute(attributeEClass, ATTRIBUTE__DESCRIPTION);
 
@@ -1638,7 +1607,7 @@ public class CreatePackageImpl extends EPackageImpl implements CreatePackage
 
     initAttributeEClass = createEClass(INIT_ATTRIBUTE);
     createEAttribute(initAttributeEClass, INIT_ATTRIBUTE__INIT_VALUE);
-    createEReference(initAttributeEClass, INIT_ATTRIBUTE__DICE_REF);
+    createEReference(initAttributeEClass, INIT_ATTRIBUTE__DICE_EVENT);
 
     categoryEClass = createEClass(CATEGORY);
 
@@ -1654,6 +1623,9 @@ public class CreatePackageImpl extends EPackageImpl implements CreatePackage
     createEAttribute(combinedAttributeRefEClass, COMBINED_ATTRIBUTE_REF__PART);
 
     mathExpressionEClass = createEClass(MATH_EXPRESSION);
+
+    intRefEClass = createEClass(INT_REF);
+    createEAttribute(intRefEClass, INT_REF__INT_VAL);
 
     combinationEClass = createEClass(COMBINATION);
     createEReference(combinationEClass, COMBINATION__CONDITIONS);
@@ -1672,7 +1644,10 @@ public class CreatePackageImpl extends EPackageImpl implements CreatePackage
 
     diceRefEClass = createEClass(DICE_REF);
     createEReference(diceRefEClass, DICE_REF__DICE);
-    createEAttribute(diceRefEClass, DICE_REF__PART);
+    createEReference(diceRefEClass, DICE_REF__PART);
+
+    dicePartEClass = createEClass(DICE_PART);
+    createEAttribute(dicePartEClass, DICE_PART__THROW);
 
     raiseEClass = createEClass(RAISE);
 
@@ -1744,7 +1719,6 @@ public class CreatePackageImpl extends EPackageImpl implements CreatePackage
     attributePartEEnum = createEEnum(ATTRIBUTE_PART);
     combinedAttributePartEEnum = createEEnum(COMBINED_ATTRIBUTE_PART);
     combinationPartEEnum = createEEnum(COMBINATION_PART);
-    dicePartEEnum = createEEnum(DICE_PART);
     decisionTablePartEEnum = createEEnum(DECISION_TABLE_PART);
     rowPartEEnum = createEEnum(ROW_PART);
     consequenceRefEEnum = createEEnum(CONSEQUENCE_REF);
@@ -1775,8 +1749,6 @@ public class CreatePackageImpl extends EPackageImpl implements CreatePackage
     setNsURI(eNS_URI);
 
     // Obtain other dependent packages
-    XtypePackage theXtypePackage = (XtypePackage)EPackage.Registry.INSTANCE.getEPackage(XtypePackage.eNS_URI);
-    TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
     XbasePackage theXbasePackage = (XbasePackage)EPackage.Registry.INSTANCE.getEPackage(XbasePackage.eNS_URI);
 
     // Create type parameters
@@ -1791,6 +1763,7 @@ public class CreatePackageImpl extends EPackageImpl implements CreatePackage
     categoryEClass.getESuperTypes().add(this.getEntity());
     combinedAttributeEClass.getESuperTypes().add(this.getEntity());
     combinedAttributeRefEClass.getESuperTypes().add(this.getConditionTargets());
+    intRefEClass.getESuperTypes().add(this.getMathExpression());
     combinationEClass.getESuperTypes().add(this.getEntity());
     combinationRefEClass.getESuperTypes().add(this.getConditionTargets());
     diceEClass.getESuperTypes().add(this.getEntity());
@@ -1808,7 +1781,6 @@ public class CreatePackageImpl extends EPackageImpl implements CreatePackage
 
     // Initialize classes and features; add operations and parameters
     initEClass(domainmodelEClass, Domainmodel.class, "Domainmodel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getDomainmodel_ImportSection(), theXtypePackage.getXImportSection(), null, "importSection", null, 0, 1, Domainmodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getDomainmodel_Name(), ecorePackage.getEString(), "name", null, 0, 1, Domainmodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDomainmodel_Elements(), this.getEntity(), null, "elements", null, 0, -1, Domainmodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1817,24 +1789,19 @@ public class CreatePackageImpl extends EPackageImpl implements CreatePackage
 
     initEClass(characterEClass, de.wilkenk.ba.create.Character.class, "Character", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getCharacter_Properties(), this.getProperty(), null, "properties", null, 0, -1, de.wilkenk.ba.create.Character.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCharacter_Operations(), this.getOperation(), null, "operations", null, 0, -1, de.wilkenk.ba.create.Character.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(propertyEClass, Property.class, "Property", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getProperty_AttrValue(), this.getAttribute(), null, "attrValue", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProperty_CombAttrValue(), this.getCombinedAttribute(), null, "combAttrValue", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProperty_CombValue(), this.getCombination(), null, "combValue", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(operationEClass, Operation.class, "Operation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getOperation_Name(), ecorePackage.getEString(), "name", null, 0, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getOperation_Params(), theTypesPackage.getJvmFormalParameter(), null, "params", null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getOperation_Type(), theTypesPackage.getJvmTypeReference(), null, "type", null, 0, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getOperation_Body(), theXbasePackage.getXExpression(), null, "body", null, 0, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(attributeEClass, Attribute.class, "Attribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getAttribute_IntValue(), ecorePackage.getEInt(), "intValue", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAttribute_StringValue(), ecorePackage.getEString(), "stringValue", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAttribute_InitialValue(), this.getInitialAttributeDecision(), null, "initialValue", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAttribute_ValueType(), ecorePackage.getEString(), "valueType", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAttribute_MinValue(), ecorePackage.getEInt(), "minValue", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAttribute_MaxValue(), ecorePackage.getEInt(), "maxValue", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAttribute_Value(), ecorePackage.getEInt(), "value", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getAttribute_InitialValue(), this.getInitialAttributeDecision(), null, "initialValue", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAttribute_Category(), this.getCategory(), null, "category", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAttribute_Description(), ecorePackage.getEString(), "description", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1847,7 +1814,7 @@ public class CreatePackageImpl extends EPackageImpl implements CreatePackage
 
     initEClass(initAttributeEClass, InitAttribute.class, "InitAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getInitAttribute_InitValue(), ecorePackage.getEInt(), "initValue", null, 0, 1, InitAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getInitAttribute_DiceRef(), this.getDiceRef(), null, "diceRef", null, 0, 1, InitAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getInitAttribute_DiceEvent(), this.getMathExpression(), null, "diceEvent", null, 0, 1, InitAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(categoryEClass, Category.class, "Category", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1863,6 +1830,9 @@ public class CreatePackageImpl extends EPackageImpl implements CreatePackage
     initEAttribute(getCombinedAttributeRef_Part(), this.getCombinedAttributePart(), "part", null, 0, 1, CombinedAttributeRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(mathExpressionEClass, MathExpression.class, "MathExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(intRefEClass, IntRef.class, "IntRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getIntRef_IntVal(), ecorePackage.getEInt(), "intVal", null, 0, 1, IntRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(combinationEClass, Combination.class, "Combination", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getCombination_Conditions(), this.getCombinationCondition(), null, "conditions", null, 0, -1, Combination.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1881,7 +1851,10 @@ public class CreatePackageImpl extends EPackageImpl implements CreatePackage
 
     initEClass(diceRefEClass, DiceRef.class, "DiceRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getDiceRef_Dice(), this.getDice(), null, "dice", null, 0, 1, DiceRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getDiceRef_Part(), this.getDicePart(), "part", null, 0, 1, DiceRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDiceRef_Part(), this.getDicePart(), null, "part", null, 0, 1, DiceRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(dicePartEClass, DicePart.class, "DicePart", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getDicePart_Throw(), ecorePackage.getEString(), "throw", null, 0, 1, DicePart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(raiseEClass, Raise.class, "Raise", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1965,11 +1938,6 @@ public class CreatePackageImpl extends EPackageImpl implements CreatePackage
     initEEnum(combinationPartEEnum, CombinationPart.class, "CombinationPart");
     addEEnumLiteral(combinationPartEEnum, CombinationPart.COMBINATION_NAME);
     addEEnumLiteral(combinationPartEEnum, CombinationPart.COMBINATION_CONDITIONS);
-
-    initEEnum(dicePartEEnum, DicePart.class, "DicePart");
-    addEEnumLiteral(dicePartEEnum, DicePart.NAME);
-    addEEnumLiteral(dicePartEEnum, DicePart.THROW_VALUE);
-    addEEnumLiteral(dicePartEEnum, DicePart.MAX_VALUE);
 
     initEEnum(decisionTablePartEEnum, DecisionTablePart.class, "DecisionTablePart");
     addEEnumLiteral(decisionTablePartEEnum, DecisionTablePart.ROW);
